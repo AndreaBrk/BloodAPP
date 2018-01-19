@@ -1,0 +1,27 @@
+
+.menu {
+  background-color: #FF9800 !important;
+}
+.menu-item div {
+  border-style: solid !important;
+  border-width: 0 0 0.01px 0 !important;
+  border-color: #E0E0E0;
+}
+.menu-item-profile div {
+  border-style: solid !important;
+  border-width: 0 0  0.1px 0 !important;
+  border-color: #E0E0E0;
+  text-align: center;
+}
+.menu-item-profile:hover {
+  background: white !important;
+}
+
+.menu-item-profile img {
+  margin-top: 10px;
+  width: 150px;
+  display: block;
+  padding-left: 36px
+}
+
+
