@@ -1,0 +1,66 @@
+import {
+  RECEIVED_DONATIONS,
+  DONATION_EVENT_CREATED,
+  RECEIVED_MY_DONATIONS,
+  DELETED_DONATIONS
+}                                       from '../constants';
+import  * as api                        from 'api/donations';
+
+export function fetchDonations(headers, params) {
+  return dispatch => {
+    return api.fetchDonations(headers, params)
+      .then((json) => {
+        dispatch({
+          type: RECEIVED_DONATIONS,
+          data: json,
+        });
+      })
+      .catch(err => {
+      })
+  }
+}
+export function createDonationEvent(headers, params) {
+  return dispatch => {
+    return api.createDonationEvent(headers, params)
+      .then((json) => {
+        dispatch({
+          type: RECEIVED_DONATIONS,
+          data: json,
+        });
+      })
+      .catch(err => {
+      })
+  }
+}
+
+export function deleteDonationEvent(headers, params) {
+  return dispatch => {
+    return api.deleteDonationEvent(headers, params)
+      .then((json) => {
+        dispatch({
+          type: DELETED_DONATIONS,
+          data: json,
+        });
+      })
+      .catch(err => {
+      })
+  }
+}
+
+export function fetchMyDonations(headers) {
+  return dispatch => {
+    return api.fetchMyDonations(headers)
+      .then((json) => {
+        dispatch({
+          type: RECEIVED_MY_DONATIONS,
+          data: json,
+        });
+      })
+      .catch(err => {
+      })
+  }
+}
+
+
+
+

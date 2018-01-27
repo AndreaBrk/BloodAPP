@@ -53,7 +53,6 @@ export default class App extends React.Component {
             { children }
           </AppContent>
         </div>
-        {'adjnaksdnal jkdlsa'}
       </MuiThemeProvider>
     );
   }

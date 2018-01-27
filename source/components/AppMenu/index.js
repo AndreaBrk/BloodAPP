@@ -5,6 +5,8 @@ import {
 import { default as MuiAppBar } from 'material-ui/AppBar';
 import styles                    from './styles.css';
 import { connect }               from 'react-redux';
+import { logoutUser }            from 'actions/auth';
+import { bindActionCreators }    from 'redux';
 
 
 class AppMenu extends React.Component {
@@ -42,7 +44,8 @@ renderIndex = () => {
 
 function mapDispatchToProps (dispatch) {
   return {
-    };
+    logoutUser: bindActionCreators(logoutUser, dispatch)
+  };
 }
 
 export default connect(
