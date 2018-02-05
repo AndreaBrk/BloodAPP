@@ -31,7 +31,6 @@ class LogIn extends React.Component {
   }
   componentWillMount () {
     let { auth } = this.props;
-    debugger
     if (auth.user) {
       this.props.history.push('/');
     }

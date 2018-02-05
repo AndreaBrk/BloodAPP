@@ -10,10 +10,11 @@ export function fetchUsers(headers) {
     headers
   });
 }
-export function editUser(params, headers) {
+export function UpdateUser(headers, params) {
+  debugger
   let rUrl = `${generateApiUrl()}/users/${params.id}`;
 
-  return apiRequest('PATCH', 'users', {
+  return apiRequest('PUT', 'users', {
     url: rUrl,
     body: params,
     headers

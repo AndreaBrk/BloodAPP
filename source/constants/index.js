@@ -7,5 +7,6 @@ export const RECEIVED_DONATIONS                         = 'RECEIVED_DONATIONS';
 export const DONATION_EVENT_CREATED                     = 'DONATION_EVENT_CREATED';
 export const RECEIVED_MY_DONATIONS                      = 'RECEIVED_MY_DONATIONS';
 export const DELETED_DONATIONS                          = 'DELETED_DONATIONS';
+export const CREATED_DONATION                           = 'CREATED_DONATION';
 
 

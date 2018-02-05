@@ -14,7 +14,6 @@ let initialState = {
 export default function authReducer (state = initialState, action) {
   switch (action.type) {
     case USER_ACCESS_REQUESTED:
-      debugger
       auth.set(action.data.user, action.data.headers, action.data.roles);
       return auth.user()
     case USER_LOGED_OUT:

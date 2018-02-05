@@ -20,7 +20,7 @@ import { auth }                  from 'utilities/auth';
 import { connect }               from 'react-redux';
 import { logoutUser }            from 'actions/auth';
 import { bindActionCreators }    from 'redux';
-import { history }                from 'store';
+import { history }               from 'store';
 
 
 
@@ -32,21 +32,20 @@ class AppBar extends React.Component {
     }
   }
   handleDashboard = () => {
-    history.push('/');
+    this.props.history.push('/');
   }
   
   logoutUser = () => {
-    debugger
     this.props.logoutUser();
-    history.push('/login');
+    this.props.history.push('/login');
   }
 
 
   logInUser = () => {  
-    history.push('/login');
+    this.props.history.push('/login');
   }
   redirectToProfile = () => {
-    history.push('/profile');
+    this.props.history.push('/profile');
   }
   
 
@@ -62,7 +61,6 @@ class AppBar extends React.Component {
                 onTouchTap={onLeftIconButtonTouchTap}
                 icon={<MenuIcon />}
               />
-            {/* <ToolbarTitle className={styles['menuButtonChild']} onClick={this.handleDashboard} text="Kubikware"/> */}
             <ToolbarTitle  className={styles['menu-title']} text={this.state.titleAppBar} />
           </ToolbarGroup>
           <ToolbarGroup >

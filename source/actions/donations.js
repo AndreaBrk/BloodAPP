@@ -1,6 +1,7 @@
 import {
   RECEIVED_DONATIONS,
   DONATION_EVENT_CREATED,
+  CREATED_DONATION,
   RECEIVED_MY_DONATIONS,
   DELETED_DONATIONS
 }                                       from '../constants';
@@ -24,7 +25,7 @@ export function createDonationEvent(headers, params) {
     return api.createDonationEvent(headers, params)
       .then((json) => {
         dispatch({
-          type: RECEIVED_DONATIONS,
+          type: CREATED_DONATION,
           data: json,
         });
       })
@@ -47,9 +48,9 @@ export function deleteDonationEvent(headers, params) {
   }
 }
 
-export function fetchMyDonations(headers) {
+export function fetchMyDonations(headers, params) {
   return dispatch => {
-    return api.fetchMyDonations(headers)
+    return api.fetchMyDonations(headers, params)
       .then((json) => {
         dispatch({
           type: RECEIVED_MY_DONATIONS,
@@ -61,6 +62,14 @@ export function fetchMyDonations(headers) {
   }
 }
 
+export function editDonationEvent(headers, params) {
+  return dispatch => {
+    return api.editDonationEvent(headers, params)
+  }
+}
 
-
-
+export function changeStatus(headers, params) {
+  return dispatch => {
+    return api.changeStatus(headers, params)
+  }
+}

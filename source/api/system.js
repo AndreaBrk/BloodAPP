@@ -109,14 +109,6 @@ export function generateApiUrl() {
   let coreApiUrl = 'http://localhost:3000'
   let coreApiVersion = 'v1'
 
-  switch (process.env.NODE_ENV) {
-    case 'development':
-      coreApiUrl = ' https://controlpanel-server-dev.herokuapp.com'
-      break
-    case 'staging':
-      coreApiUrl = 'https://controlpanel-server-stg.herokuapp.com'
-      break
-  }
 
   return `${coreApiUrl}/${coreApiVersion}`
 }

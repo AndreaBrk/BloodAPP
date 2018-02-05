@@ -26,7 +26,6 @@ export function loginUser (creds) {
     let rUrl = `${generateApiUrl()}/auth/sign_in`;
     return fetch(rUrl, config)
       .then((response, x, z) => {
-        debugger
         return response.json()
         .then(user => ({ user, response } ));
       }).then(({ user, response }) =>  {
@@ -120,14 +119,6 @@ export function logoutUser () {
 function generateApiUrl(cred) {
   let coreApiUrl = 'http://localhost:3000'
 
-  switch (process.env.NODE_ENV) {
-    case 'development':
-      coreApiUrl = ' https://controlpanel-server-dev.herokuapp.com'
-      break
-    case 'staging':
-      coreApiUrl = 'https://controlpanel-server-stg.herokuapp.com'
-      break
-  }
-
   return `${coreApiUrl}`
 }
+
