@@ -12,6 +12,12 @@ var config = require('./webpack.config');
 var app = express();
 var compiler = webpack(config);
 
+const {
+  HOST = 'localhost',
+  PORT = 4000
+} = process.env;
+
+
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
@@ -39,11 +45,11 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// app.listen(PORT, HOST, function (err) {
-//   if (err) {
-//     console.log(err);
-//     return;
-//   }
+app.listen(PORT, HOST, function (err) {
+  if (err) {
+    console.log(err);
+    return;
+  }
 
-//   console.log(`Listening at http://${HOST}:${PORT}`);
-// });
+  console.log(`Listening at http://${HOST}:${PORT}`);
+});
