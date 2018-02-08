@@ -2,13 +2,13 @@ import React                     from 'react';
 import { connect }               from 'react-redux';
 import { bindActionCreators }    from 'redux';
 import styles                    from './styles.css';
-import { 
+import {
   fetchMyDonations,
   createDonationEvent,
   changeStatus,
   deleteDonationEvent
 }                                 from 'actions/donations';
-import { 
+import {
   UpdateUser
 }                                 from 'actions/users';
 import { auth }                   from 'utilities/auth';
@@ -16,12 +16,12 @@ import TextField                  from 'material-ui/TextField';
 import RaisedButton               from 'material-ui/RaisedButton';
 import FlatButton                 from 'material-ui/FlatButton';
 import EditDialog                 from './EditDialog'
+import avatar                     from './avatar-placeholder.png';
 
 
 
 class Profile extends React.Component {
   constructor (props) {
-    debugger
     super(props);
     this.state = {
       openDialog: false,
@@ -33,7 +33,6 @@ class Profile extends React.Component {
       blood_type_filter: null,
       password_message: null
     }
-    debugger
   }
 
   componentWillMount() {
@@ -78,21 +77,9 @@ class Profile extends React.Component {
     })
   }
 
-  handleChangeStatus = (donation, event) => {
-    this.props.changeStatus(auth.headers(), {id: donation.id})
-  }
-
-  getColumns = (donation) => {
-    return <tr key={donation.id}>
-      <th>{donation.name || '-'}</th>
-      <th>{donation.blood_type || '-'}</th> 
-      <th>Actual size</th> 
-      <th>{donation.size || '-'}</th>
-      <th><FlatButton label={donation.status}   onClick={this.handleChangeStatus.bind(this, donation)}/></th>
-      <th><FlatButton label="Edit"   onClick={this.handleOpenEditDIalog.bind(this, donation)}/></th>
-      <th><FlatButton label="Delete" secondary={true} onClick={this.handleDelete.bind(this, donation)} /></th>
-    </tr>
-  }
+  // handleChangeStatus = (donation, event) => {
+  //   this.props.changeStatus(auth.headers(), {id: donation.id})
+  // }
 
 
   ChangeFirstName = (event) => {
@@ -146,60 +133,42 @@ class Profile extends React.Component {
 
     return (
       <div>
-        <div>
+          <div className={styles.avatar}>
+            <img src={avatar} />
+          </div>
           <TextField
-            hintText={this.state.first_name}
+            value={this.state.first_name}
+            hintText="Nombre"
             onChange={(event) => this.ChangeFirstName(event)}
-          /><br />
+            fullWidth={true}
+          />
           <TextField
-            hintText={this.state.last_name}
+            value={this.state.last_name}
+            hintText="Apellido"
             onChange={(event) => this.ChangeLastName(event)}
-          /><br />
+            fullWidth={true}
+          />
           <TextField
-            hintText={this.state.email}
+            value={this.state.email}
+            hintText="Email"
             onChange={(event) => this.ChangeEmail(event)}
-          /><br />
+            fullWidth={true}
+          />
           <TextField
             type='password'
-            hintText={this.state.password}
             errorText={this.state.password_message}
-            floatingLabelText="New Password"
+            hintText="Nueva contraseña"
             onChange={(event) => this.ChangePassword(event)}
-          /><br />
+            fullWidth={true}
+          />
           <RaisedButton
-            label="Submit"
+            label="Guardar"
             primary={true}
             className={styles['button']}
             onClick={(event) => this.handleClick(event)}
+            fullWidth={true}
           />
         </div>
-        <div>
-        <div>
-          Filtros:
-          <TextField
-            hintText="Blood Type"
-            ref='blood_type_filter'
-            className={styles['field']}
-            underlineShow={false}
-            value={this.state.blood_type_filter}
-            onChange={this.handleBloodTypeFilter}
-          />
-
-          <RaisedButton
-            label="Submit"
-            primary={true}
-            className={styles['button']}
-            onClick={(event) => this.handleFilter(event)}
-          />
-        </div>
-          <table>
-            {this.generateRows()}
-          </table>
-        </div>
-        <div>
-          {this.state.openDialog && <EditDialog name={this.state.donation.name} type={this.state.donation.blood_type} size={this.state.donation.size} id={this.state.donation.id} handleClose={this.state.handleClose} />}
-        </div>
-      </div>
     );
   }
 }
@@ -212,7 +181,7 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
   return {
     deleteDonationEvent: bindActionCreators(deleteDonationEvent, dispatch),
-    changeStatus: bindActionCreators(changeStatus, dispatch), 
+    changeStatus: bindActionCreators(changeStatus, dispatch),
     fetchData: bindActionCreators(fetchMyDonations, dispatch),
     UpdateUser: bindActionCreators(UpdateUser, dispatch)
   };

@@ -1,10 +1,10 @@
 import React                     from 'react';
-import { 
-  Toolbar, 
-  ToolbarGroup, 
+import {
+  Toolbar,
+  ToolbarGroup,
   ToolbarTitle }                 from 'material-ui/Toolbar';
 import styles                    from './styles.css';
-import { 
+import {
   FlatButton,
   MenuItem,
   IconMenu,
@@ -20,10 +20,9 @@ import { auth }                  from 'utilities/auth';
 import { connect }               from 'react-redux';
 import { logoutUser }            from 'actions/auth';
 import { bindActionCreators }    from 'redux';
-import { history }               from 'store';
-
-
-
+import {
+  withRouter
+} from 'react-router-dom'
 class AppBar extends React.Component {
   constructor (props) {
     super(props);
@@ -31,37 +30,33 @@ class AppBar extends React.Component {
       titleAppBar: this.props.title
     }
   }
-  handleDashboard = () => {
-    this.props.history.push('/');
+  handleClickTitle = () => {
+    this.props.history.push('/dashboard');
   }
-  
+
   logoutUser = () => {
     this.props.logoutUser();
     this.props.history.push('/login');
   }
 
 
-  logInUser = () => {  
+  logInUser = () => {
     this.props.history.push('/login');
   }
+
   redirectToProfile = () => {
     this.props.history.push('/profile');
   }
-  
+
 
   render () {
     let { title, onLeftIconButtonTouchTap } = this.props;
 
     return (
-      <div>
-        <Toolbar className={styles['menuButton']}>
-          <ToolbarGroup className={styles['menuButtonChild']} firstChild={true}>
-              <FlatButton
-                className={styles['menu-button']}
-                onTouchTap={onLeftIconButtonTouchTap}
-                icon={<MenuIcon />}
-              />
-            <ToolbarTitle  className={styles['menu-title']} text={this.state.titleAppBar} />
+      <div className={styles['nav-bar']}>
+        <Toolbar className={styles.toolbar}>
+          <ToolbarGroup firstChild={true}>
+            <ToolbarTitle className={styles['menu-title']} text={<a onClick={this.handleClickTitle}>Dashboard</a>} />
           </ToolbarGroup>
           <ToolbarGroup >
           </ToolbarGroup>
@@ -71,29 +66,31 @@ class AppBar extends React.Component {
               targetOrigin={{horizontal: 'left', vertical: 'top'}}
               iconButtonElement={
                 <IconButton touch={false}>
-                  <Notifications />
+                  <Notifications color="#fff" />
                 </IconButton>
               }
             >
-              <MenuItem primaryText="Please take a minute to complete the standup" />
+              <MenuItem primaryText="No hay notificaciones" />
             </IconMenu>
             <IconMenu
               anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
               targetOrigin={{horizontal: 'left', vertical: 'top'}}
               iconButtonElement={
                 <IconButton touch={true}>
-                  <Person />
+                  <Person color="#fff" />
                 </IconButton>
               }
             >
-            {!auth.user &&
-              <MenuItem onClick={this.logInUser} primaryText="Log In" />
-            }
-            {auth.user &&
-              [<MenuItem onClick={this.redirectToProfile} primaryText="User Profile" />,
-              <MenuItem onClick={this.logoutUser} primaryText="Log Out" />]
-              // <MenuItem onClick={this.redirectToProfile} primaryText="User Profile" />
-              // <MenuItem onClick={this.logoutUser} primaryText="Log out" />
+
+            {auth.user() ?
+            [
+              <MenuItem key="profile" onClick={this.redirectToProfile} primaryText="Mi perfil" />,
+              <MenuItem key="log-out" onClick={this.logoutUser} primaryText="Log Out" />
+            ]
+            // <MenuItem onClick={this.redirectToProfile} primaryText="User Profile" />
+            // <MenuItem onClick={this.logoutUser} primaryText="Log out" />
+            :
+            <MenuItem onClick={this.logInUser} primaryText="Log In" />
             }
             </IconMenu>
           </ToolbarGroup>
@@ -111,7 +108,9 @@ function mapDispatchToProps (dispatch) {
   };
 }
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(AppBar);
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(AppBar)
+)

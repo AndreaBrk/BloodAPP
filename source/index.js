@@ -1,11 +1,14 @@
 import React                    from 'react';
 import ReactDOM                 from 'react-dom';
 import store, { history }       from './store';
+import { auth }                 from 'utilities/auth';
 import { Provider }             from 'react-redux';
-import { 
-  IndexRoute, 
-  browserHistory 
+import {
+  IndexRoute,
+  Redirect,
+  browserHistory
 }                               from 'react-router';
+import MuiThemeProvider         from 'material-ui/styles/MuiThemeProvider';
 import App                      from './containers/App';
 import Profile                  from './components/Profile';
 import LogIn                    from './components/LogIn';
@@ -17,18 +20,26 @@ import {
   Switch
  }                                      from 'react-router-dom';
 
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={(props) => (
+    auth.user() ? <Component {...props} /> : <Redirect to='/login' />
+  )} />
+)
+
 ReactDOM.render(
   <Provider store={store} key="provider">
-    <Router basename="/" component={App}>
-      <Switch>
-          <App>
-            <Route exact path="/profile" component={Profile} />
+    <MuiThemeProvider>
+      <Router basename="/" component={App}>
+        <Switch>
             <Route exact path="/login" component={LogIn} />
-            <Route exact path="/dashboard" component={Dashboard} />
-            {/* <Route path="/todo" component={Todo} /> */}
-          </App>
-      </Switch>
-    </Router>
+            <App>
+              <PrivateRoute exact path="/profile" component={Profile} />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              {/* <PrivateRoute path="/todo" component={Todo} /> */}
+            </App>
+        </Switch>
+      </Router>
+    </MuiThemeProvider>
   </Provider>,
   document.getElementById('root')
 );

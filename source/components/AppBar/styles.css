@@ -1,18 +1,38 @@
+.nav-bar {
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.09), 0 1px 5px 0 rgba(0,0,0,.02), 0 2px 2px -1px rgba(0,0,0,.08);
+}
+
+.toolbar {
+  background-color: #AD1457 !important;
+}
+
 
 .menu {
   background-color: #FF9800 !important;
 }
+
+.menu-title {
+  color: #fff !important;
+  margin-left: 30px;
+}
+
+.menu-title a {
+  cursor: pointer;
+}
+
 .menu-item div {
   border-style: solid !important;
   border-width: 0 0 0.01px 0 !important;
   border-color: #E0E0E0;
 }
+
 .menu-item-profile div {
   border-style: solid !important;
   border-width: 0 0  0.1px 0 !important;
   border-color: #E0E0E0;
   text-align: center;
 }
+
 .menu-item-profile:hover {
   background: white !important;
 }

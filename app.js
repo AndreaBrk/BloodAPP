@@ -29,6 +29,15 @@ app.get('/reset.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'reset.css'));
 });
 
+app.get('/globals.css', function (req, res) {
+  res.sendFile(path.join(__dirname, 'source/styles/globals.css'));
+});
+
+// NOTA: Version customizada
+app.get('/simple-grid.css', function (req, res) {
+  res.sendFile(path.join(__dirname, 'source/styles/simple-grid.css'));
+});
+
 app.get('/rc-tooltip.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'node_modules/rc-tooltip/assets/bootstrap_white.css'));
 });

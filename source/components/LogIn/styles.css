@@ -1,44 +1,48 @@
-.email-wrapper {
-  /*max-width: 400px;*/
+.box {
   left: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
   width: 380px;
-  margin: 10px auto;
-  padding: 35px 35px 25px 25px;
-  background: #fafafa;
-  border: 1px solid #ebebeb;
-  box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
+}
+
+.paper {
+  padding: 45px 35px;
+}
+
+.paper h3 {
+  font-size: 24px;
+  color: #545252;
+  /* color: #2196F3; */
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.actions {
+  margin-top: 30px;
 }
 
 .field {
-  display: block !important;
+  margin-bottom: 20px;
 }
+
 .button {
-  float: right !important;
+  width: 100%;
 }
-.button div div {
-  background-color: #FF8F00 !important;  
+
+.errors {
+  margin: 15px 0;
 }
+
 .error {
-  color: #D50000 !important;
+  color: #ff4646 !important;
 }
 
-.error div div {
-  padding: 0px !important;
+.error + .error {
+  margin-top: 15px;
 }
 
-h3 {
-  color: #4a89dc;
-  font-weight: 300;
-  text-align: center;
-}
-
-.image img {
-  padding-left: 140px;
-  padding-bottom: 20px;
-}
 .text-reset-pass {
   color: #FF8F00 !important;
   font-weight: 500 !important;
@@ -48,6 +52,7 @@ h3 {
 
 .image-body {
   /* background-image:linear-gradient(0deg,rgba(80,80,80,0.6),rgba(80,80,80,0.6)),url("images/zoni_min.jpg") !important; */
+  background-image: url(./pattern.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;

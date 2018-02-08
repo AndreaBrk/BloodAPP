@@ -15,7 +15,6 @@ class AppMenu extends React.Component {
   }
 
   handleClick = (url) => {
-    this.props.onLeftIconButtonTouchTap()
     this.props.router.push(url);
   }
 
@@ -25,19 +24,13 @@ renderIndex = () => {
   this.props.router.push('/index')
 }
   render () {
-    let { open, title, onLeftIconButtonTouchTap } = this.props;
+    let { open, title } = this.props;
 
     return (
-      <Drawer 
-        open={open} 
-        docked={false}
-      >
-        <MuiAppBar
-          title={title}
-          onLeftIconButtonTouchTap={onLeftIconButtonTouchTap}
-          className={styles['menu']}
-        />
-      </Drawer>
+      <MuiAppBar
+        title={title}
+        className={styles['menu']}
+      />
     );
   }
 }

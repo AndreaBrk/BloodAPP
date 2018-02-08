@@ -1,0 +1,36 @@
+.map-wrapper {
+  width: 100%;
+  position: relative;
+  height: 400px;
+}
+
+.table-wrapper {
+  margin-bottom: 60px;
+}
+
+@media(min-width:768px){}
+
+@media(min-width:992px){}
+
+@media(min-width:1200px){
+  .map-wrapper {
+    height: 800px;
+    width: calc(100% + 56px * 2);
+    margin-left: -56px;
+  }
+
+  .filters {
+    float: right;
+    display: flex;
+    align-items: center;
+  }
+
+  .filters .label {
+    font-weight: 400;
+    margin-right: 15px;
+  }
+
+  .submit {
+    float: right;
+  }
+}

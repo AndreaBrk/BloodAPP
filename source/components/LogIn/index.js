@@ -1,17 +1,20 @@
 import React                     from 'react';
 import { connect }               from 'react-redux';
 import { bindActionCreators }    from 'redux';
-import { 
+import {
   loginUser,
 }                                from 'actions/auth';
 import styles                    from './styles.css';
 import _                         from 'lodash';
+import Paper                     from 'material-ui/Paper';
 import TextField                 from 'material-ui/TextField';
 import RaisedButton              from 'material-ui/RaisedButton';
 import { List, ListItem }        from 'material-ui/List';
 import { auth }                  from 'utilities/auth';
 import { generateApiUrl }        from 'api/system'
 import FlatButton                from 'material-ui/FlatButton';
+import { blue500 } from 'material-ui/styles/colors';
+// import bg from './pattern.svg';
 import { debuglog } from 'util';
 
 
@@ -32,7 +35,7 @@ class LogIn extends React.Component {
   componentWillMount () {
     let { auth } = this.props;
     if (auth.user) {
-      this.props.history.push('/');
+      this.props.history.push('/dashboard');
     }
     this.state = {
       email: null,
@@ -55,7 +58,7 @@ class LogIn extends React.Component {
     const password = this.state.password;
     let err = null
     if (!email || !password) {
-      err = ['email and password could not be blank']
+      err = ['Email y Contraseña son requeridos']
       this.setState({
         errors: err
       })
@@ -85,7 +88,7 @@ class LogIn extends React.Component {
 
   checkLogin() {
     if (auth.user()) {
-      this.props.history.push('/');
+      this.props.history.push('/dashboard');
     }
   }
 
@@ -93,40 +96,55 @@ class LogIn extends React.Component {
 
     return (
       <div className={styles['image-body']}  onEnter={this.checkLogin()}>
-        <div className={styles['email-wrapper']} >
-          <List>
-            {this.state.errors && this.state.errors.map((err, idx) => {
-              return (<ListItem className={styles['error']} primaryText={err} />)
-            })}
-          </List>
-          <TextField
-            type='email'
-            hintText="Email"
-            ref='email'
-            className={styles['field']}
-            underlineShow={false}
-            value={this.state.email}
-            onChange={this.handleChangeEmail}
-          />
-          <TextField
-            type='password'
-            hintText="Password"
-            ref='password'
-            className={styles['field']}
-            underlineShow={false}
-            value={this.state.password}
-            onChange={this.handleChangePassword}
-          />
-          <div>
-              <FlatButton className={styles['text-reset-pass']}  label="Recover Password" onClick={this.handleClickRecover}/>
+        <div className={styles.box}>
+          <Paper className={styles.paper} zDepth={2}>
+            <h3>Ingresar</h3>
+
+            {this.state.errors &&
+            <div className={styles.errors}>
+            {this.state.errors && this.state.errors.map((err, idx) => (
+              <div className={styles['error']}>
+                {err}
+              </div>
+            ))}
+            </div>
+            }
+
+
+            <TextField
+              type='email'
+              hintText="Email"
+              fullWidth
+              className={styles.field}
+              value={this.state.email}
+              onChange={this.handleChangeEmail}
+            />
+
+            <TextField
+              type='password'
+              hintText="Contraseña"
+              fullWidth
+              className={styles.field}
+              value={this.state.password}
+              onChange={this.handleChangePassword}
+            />
+            {/*
+            <div>
+                <FlatButton className={styles['text-reset-pass']}  label="Recover Password" onClick={this.handleClickRecover}/>
+            </div>
+            */}
+          </Paper>
+
+          <div className={styles.actions}>
+            <RaisedButton
+              label="Enviar"
+              style={{ height: 45 }}
+              backgroundColor={blue500}
+              labelColor={"#fff"}
+              className={styles['button']}
+              onClick={(event) => this.handleClick(event)}
+            />
           </div>
-          
-          <RaisedButton
-            label="Login"
-            primary={true}
-            className={styles['button']}
-            onClick={(event) => this.handleClick(event)}
-          />
         </div>
       </div>
     );
@@ -143,7 +161,7 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
   return {
     loginUser: bindActionCreators(loginUser, dispatch),
-    
+
   };
 }
 
