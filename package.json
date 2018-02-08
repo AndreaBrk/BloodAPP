@@ -53,6 +53,11 @@
     "start": "node app.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:webpack:development": "webpack --config webpack.config.dev.js",
+    "postinstall": "npm run build",
+    "clean": "rimraf build",
+    "lint": "eslint source",
+    "pretest": "npm run lint"
   }
 }
