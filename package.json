@@ -51,10 +51,11 @@
   },
   "scripts": {
     "start": "node app.js",
+    "build:webpack:development": "webpack --config webpack.config.dev.js",
     "build": "npm run clean && npm run build:webpack:$NODE_ENV",
+    "postinstall": "npm run build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "build:webpack:development": "webpack --config webpack.config.dev.js",
     "clean": "rimraf build",
     "lint": "eslint source",
     "pretest": "npm run lint"
