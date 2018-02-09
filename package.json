@@ -52,6 +52,7 @@
   "scripts": {
     "start": "node app.js",
     "build:webpack:development": "webpack --config webpack.config.dev.js",
+    "build:webpack:production": "webpack --config webpack.config.ded.js",
     "build": "npm run clean && npm run build:webpack:$NODE_ENV",
     "postinstall": "npm run build",
     "test": "react-scripts test --env=jsdom",
