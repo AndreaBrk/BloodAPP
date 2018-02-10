@@ -121,7 +121,7 @@ function generateApiUrl(cred) {
 
   switch (process.env.NODE_ENV) {
     case 'production':
-      coreApiUrl = 'avbapi.herokuapp.com'
+      coreApiUrl = 'https://avbapi.herokuapp.com'
       break
   }
 
