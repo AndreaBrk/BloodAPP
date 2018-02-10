@@ -58,6 +58,7 @@
     "eject": "react-scripts eject",
     "clean": "rimraf build",
     "lint": "eslint source",
-    "pretest": "npm run lint"
+    "pretest": "npm run lint",
+    "postinstall": "npm run build"
   }
 }
