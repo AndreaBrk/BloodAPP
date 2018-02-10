@@ -66,7 +66,7 @@ module.exports = {
         ]
       },{
       //to support eg. background-image property
-       test: /\.(gif|jpg|jpeg|png|woff|woff2|eot|ico|ttf|svg)$/i,
+       test: /\.(gif|jpg|jpeg|png|ico|svg)$/i,
        loader: 'url-loader?limit=100000'
       }
     ],
