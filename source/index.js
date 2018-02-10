@@ -35,7 +35,6 @@ ReactDOM.render(
             <App>
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              {/* <PrivateRoute path="/todo" component={Todo} /> */}
             </App>
         </Switch>
       </Router>
