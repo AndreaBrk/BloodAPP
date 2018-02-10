@@ -2,10 +2,8 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
+  // todo: buscar que es devtool 'source-map', hay otra opcion para prod
   devtool: 'source-map',
-  resolve: {
-    root: __dirname + '/source'
-  },
   entry: [
     './source/index'
   ],
@@ -14,7 +12,9 @@ module.exports = {
     filename: 'index.js',
   },
   resolve: {
+    // probar sin root 
     root: __dirname,
+    // leer doc sobre esto
     modulesDirectories: [ 'node_modules', 'source' ],
     extensions: [ '', '.js', '.jsx', '.css' ],
     alias: {
@@ -29,7 +29,9 @@ module.exports = {
     }
   },
   plugins: [
+    // buscar este plugin 
     new webpack.optimize.OccurenceOrderPlugin(),
+    // define variables de entorno
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
@@ -59,10 +61,10 @@ module.exports = {
           //the fonts will be put in the DOM <style> tag as eg. @font-face{ src:url(assets/fonts/font.ttf); }
         }
       },
-      {
-        test: /\.css$/,
-        loaders: ["style-loader","css-loader"]
-      }
+      // {
+      //   test: /\.css$/,
+      //   loaders: ["style-loader","css-loader"]
+      // }
     ],
     loaders: [{
       test: /\.js$/,
