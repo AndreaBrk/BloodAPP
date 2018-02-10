@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
   devtool: 'source-map',
@@ -28,6 +29,14 @@ module.exports = {
       store     : path.join(__dirname, 'source', 'store'),
     }
   },
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    })
+  ],
   module: {
     rules: [
       {
