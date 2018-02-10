@@ -26,7 +26,7 @@ app.get('/react-contextmenu.css', function (req, res) {
 
 // TODO Remove this when we use Webpack
 app.get('/static/index.js', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build/index.js'));
+  res.sendFile(path.join(__dirname, 'build/static/index.js'));
 });
 
 app.get('*', function (req, res) {
