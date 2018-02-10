@@ -120,9 +120,7 @@ function generateApiUrl(cred) {
   let coreApiUrl = 'http://localhost:3000'
 
   switch (process.env.NODE_ENV) {
-    case 'development':
-      break
-    case 'staging':
+    case 'production':
       coreApiUrl = 'avbapi.herokuapp.com'
       break
   }
