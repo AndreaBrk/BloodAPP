@@ -39,7 +39,7 @@ module.exports = {
     })
   ],
   module: {
-    rules: [
+    loaders: [
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,    //to support @font-face rule
         loader: "url-loader",
