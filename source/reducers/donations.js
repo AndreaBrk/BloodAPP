@@ -6,25 +6,7 @@ import { auth }           from 'utilities/auth';
 
 // let initialState = auth.all() || {};
 let initialState = {
-  donations: [{
-    id: 1,
-    name: 'Cosmos Fulanito',
-    blood_type: 'A-',
-    size: 5,
-    description: 'Wololo esto es una descripcion super chevere.'
-  }, {
-    id: 2,
-    name: 'Cosmos Fulanito',
-    blood_type: 'A-',
-    size: 5,
-    description: 'Wololo esto es una descripcion super chevere.'
-  }, {
-    id: 3,
-    name: 'Cosmos Fulanito',
-    blood_type: 'A-',
-    size: 5,
-    description: 'Wololo esto es una descripcion super chevere.'
-  }],
+  donations: [],
   my_donations: []
 };
 export default function donationsReducer (state = initialState, action) {
