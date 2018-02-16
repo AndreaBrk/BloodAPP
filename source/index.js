@@ -32,8 +32,8 @@ ReactDOM.render(
       <Router basename="/" component={App}>
         <Switch>
             <Route exact path="/login" component={LogIn} />
+            <IndexRoute component={ Dashboard } />
             <App>
-              <IndexRoute component={ dashboard } />
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </App>
