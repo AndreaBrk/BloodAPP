@@ -65,6 +65,7 @@ class Dashboard extends React.Component {
 
 
   showPosition = (location) => {
+    debugger
     let posLat = location.coords.latitude
     let posLng = location.coords.longitude
     this.setState({
@@ -162,7 +163,6 @@ class Dashboard extends React.Component {
   handleFilter = () => {
     let posLat = this.state.posLat
     let posLng = this.state.posLng
-    debugger
     this.props.fetchData(auth.headers(), {posLat, posLng, blood_type: this.state.blood_type_filter})
   }
 
