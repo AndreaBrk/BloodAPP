@@ -29,12 +29,12 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 ReactDOM.render(
   <Provider store={store} key="provider">
     <MuiThemeProvider>
-      <Router basename="/" component={App}>
+      <Router basename="/" component={Dashboard}>
         <Switch>
             <Route exact path="/login" component={LogIn} />
             <App>
               <PrivateRoute exact path="/profile" component={Profile} />
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              {/* <PrivateRoute exact path="/dashboard" component={Dashboard} /> */}
             </App>
         </Switch>
       </Router>
