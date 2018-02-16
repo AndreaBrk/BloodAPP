@@ -30,8 +30,8 @@ ReactDOM.render(
   <Provider store={store} key="provider">
     <MuiThemeProvider>
       <Router basename="/" component={App}>
-      <IndexRoute component={ Dashboard } />
         <Switch>
+            <IndexRoute component={ Dashboard } />
             <Route exact path="/login" component={LogIn} />
             <App>
               <PrivateRoute exact path="/profile" component={Profile} />
