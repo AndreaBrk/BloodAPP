@@ -31,7 +31,6 @@ ReactDOM.render(
     <MuiThemeProvider>
       <Router basename="/" component={App}>
         <Switch>
-            <IndexRoute component={ Dashboard } />
             <Route exact path="/login" component={LogIn} />
             <App>
               <PrivateRoute exact path="/profile" component={Profile} />
