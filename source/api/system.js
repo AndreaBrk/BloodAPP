@@ -109,6 +109,12 @@ export function generateApiUrl() {
   let coreApiUrl = 'http://localhost:3000'
   let coreApiVersion = 'v1'
 
+  switch (process.env.NODE_ENV) {
+    case 'production':
+      coreApiUrl = 'https://avbapi.herokuapp.com'
+      break
+  }
+
 
   return `${coreApiUrl}/${coreApiVersion}`
 }
