@@ -52,6 +52,8 @@ class Signup extends React.Component {
   handleClick (event) {
     const email = this.state.email;
     const password = this.state.password;
+    const last_name = this.state.last_name;
+    const first_name = this.state.first_name;
     let err = null
     if (!email || !password || !last_name || !first_name) {
       err = ['Email y Contraseña son requeridos']
