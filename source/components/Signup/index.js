@@ -65,7 +65,7 @@ class Signup extends React.Component {
         errors: err
       })
       const creds = { first_name: first_name, last_name: last_name, email: email, password: password };
-      this.signup(creds)
+      this.props.signup(creds)
     }
   }
 
