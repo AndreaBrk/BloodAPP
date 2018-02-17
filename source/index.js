@@ -20,7 +20,6 @@ import {
   Route,
   Switch
  }                                      from 'react-router-dom';
-import { signUp } from './actions/auth';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
