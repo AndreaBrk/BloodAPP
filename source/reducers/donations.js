@@ -26,7 +26,7 @@ export default function donationsReducer (state = initialState, action) {
     case DELETED_DONATION:
       debugger
       const value = action.data.id
-      const arr = arr.filter(function(item) { 
+      const arr = state.donations.filter(function(item) { 
           return item.id !== value
       })
       return {
