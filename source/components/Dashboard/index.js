@@ -70,7 +70,7 @@ class Dashboard extends React.Component {
   errorCallback = (err) => {
     debugger
     this.setState({
-      message_warning: err
+      message_warning: "Es necesario que la geolocalización esté activada"
     })
   }
   showPosition = (location) => {
