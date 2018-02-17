@@ -121,7 +121,7 @@ export function signUp(params) {
     return apiRequest('POST', 'user', {
       url: rUrl,
       body: params,
-      headers
+      headers: null
     });
   }
 }
