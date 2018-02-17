@@ -32,7 +32,7 @@ export default function donationsReducer (state = initialState, action) {
       })
       return {
         ...state,
-        donations: action.data
+        donations: arr
       }
     default:
       return state;
