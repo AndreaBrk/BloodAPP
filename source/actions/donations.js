@@ -39,8 +39,8 @@ export function deleteDonationEvent(headers, params) {
     return api.deleteDonationEvent(headers, params)
       .then((json) => {
         dispatch({
-          type: DELETED_DONATIONS,
-          data: json,
+          type: DELETED_DONATION,
+          data: params,
         });
       })
       .catch(err => {

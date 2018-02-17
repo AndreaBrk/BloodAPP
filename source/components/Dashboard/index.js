@@ -4,7 +4,8 @@ import { bindActionCreators }    from 'redux';
 import styles                    from './styles.css';
 import {
   fetchDonations,
-  createDonationEvent
+  createDonationEvent,
+  deleteDonationEvent
 }                                 from 'actions/donations';
 import { auth }                   from 'utilities/auth';
 import GoogleMapReact             from 'google-map-react';
@@ -204,7 +205,10 @@ class Dashboard extends React.Component {
 
 
   handleDelete = (event, donation) => {
-
+    params = {
+      id: donation.id
+    }
+    this.props.deleteDonationEvent(auth.headers(), params)
   }
 
   render () {
@@ -409,6 +413,7 @@ function mapDispatchToProps (dispatch) {
   return {
     fetchData: bindActionCreators(fetchDonations, dispatch),
     createDonationEvent: bindActionCreators(createDonationEvent, dispatch),
+    deleteDonationEvent: bindActionCreators(deleteDonationEvent, dispatch),
   };
 }
 
