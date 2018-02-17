@@ -85,12 +85,12 @@ class Signup extends React.Component {
 
   setErrors = (errors) => {
     debugger
-    let errors = []
+    let err = []
     errors.map((key,value) => (
-      errors << value
+      err << value
     ))
     this.setState({
-      errors
+      errors: err
     })
   }
 
