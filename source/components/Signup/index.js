@@ -68,8 +68,10 @@ class Signup extends React.Component {
       const creds = { first_name: first_name, last_name: last_name, email: email, password: password };
       this.props.signUp(creds)
       .then((e) => {
-        debugger
         this.setMessage("Se le ha enviado un mensaje, revise su casilla y confirme el email")
+      })
+      .catch((errors) => {
+        this.setErrors("Se le ha enviado un mensaje, revise su casilla y confirme el email")
       })
     }
   }
@@ -80,6 +82,14 @@ class Signup extends React.Component {
       messages: [message]
     })
   }
+
+  setErrors = (errors) => {
+    debugger
+    this.setState({
+      errors: errors
+    })
+  }
+
   handleChangeEmail = (event) => {
     this.setState({
       email: event.target.value,
