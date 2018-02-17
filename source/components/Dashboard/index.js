@@ -60,6 +60,9 @@ class Dashboard extends React.Component {
       selectedPlace: {},
       onlyMine: false,
     }
+  }
+
+  componentWillMount = () => {
     navigator.geolocation.getCurrentPosition(this.showPosition);
   }
 
