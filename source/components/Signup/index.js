@@ -71,7 +71,7 @@ class Signup extends React.Component {
         this.setMessage("Se le ha enviado un mensaje, revise su casilla y confirme el email")
       })
       .catch((errors) => {
-        this.setErrors(errors)
+        this.setErrors(errors.errors)
       })
     }
   }
