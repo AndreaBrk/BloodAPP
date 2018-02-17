@@ -66,12 +66,7 @@ class Profile extends React.Component {
     }
   }
 
-  generateRows = () => {
-    return _.map(this.props.donations, (donation, donation_idx) => {
-      return this.getColumns(donation)
 
-    })
-  }
 
   handleDelete = (donation, event) => {
     this.props.deleteDonationEvent(auth.headers(), {id: donation.id})
@@ -93,18 +88,6 @@ class Profile extends React.Component {
 
   handleChangeStatus = (donation, event) => {
     this.props.changeStatus(auth.headers(), {id: donation.id})
-  }
-
-  getColumns = (donation) => {
-    return <tr key={donation.id}>
-      <th>{donation.name || '-'}</th>
-      <th>{donation.blood_type || '-'}</th> 
-      <th>Actual size</th> 
-      <th>{donation.size || '-'}</th>
-      <th><FlatButton label={donation.status}   onClick={this.handleChangeStatus.bind(this, donation)}/></th>
-      <th><FlatButton label="Edit"   onClick={this.handleOpenEditDIalog.bind(this, donation)}/></th>
-      <th><FlatButton label="Delete" secondary={true} onClick={this.handleDelete.bind(this, donation)} /></th>
-    </tr>
   }
 
 
@@ -205,9 +188,6 @@ class Profile extends React.Component {
             onClick={(event) => this.handleFilter(event)}
           />
         </div>
-          <table>
-            {this.generateRows()}
-          </table>
         </div>
         <div>
           {this.state.openDialog && <EditDialog name={this.state.donation.name} type={this.state.donation.blood_type} size={this.state.donation.size} id={this.state.donation.id} handleClose={this.state.handleClose} />}
