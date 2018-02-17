@@ -68,12 +68,14 @@ class Signup extends React.Component {
       const creds = { first_name: first_name, last_name: last_name, email: email, password: password };
       this.props.signUp(creds)
       .then((e) => {
+        debugger
         this.setMessage("Se le ha enviado un mensaje, revise su casilla y confirme el email")
       })
     }
   }
 
   setMessage = (message) => {
+    debugger
     this.setState({
       messages: [message]
     })
