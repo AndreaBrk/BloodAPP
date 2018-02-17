@@ -34,7 +34,7 @@ export default function donationsReducer (state = initialState, action) {
         donations: arr
       }
     case CREATED_DONATION:
-      const arr = state.donations
+      let arr_aux = state.donations
       arr.push(action.data)
       return {
         ...state,
