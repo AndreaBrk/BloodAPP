@@ -208,6 +208,7 @@ class Dashboard extends React.Component {
     params = {
       id: donation.id
     }
+    debugger
     this.props.deleteDonationEvent(auth.headers(), params)
   }
 
