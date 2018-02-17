@@ -65,17 +65,15 @@ class Dashboard extends React.Component {
   }
 
   componentWillMount = () => {
-    navigator.geolocation.getCurrentPosition(this.showPosition,this.errorCallback, {timeout:10000});
+    navigator.geolocation.getCurrentPosition(this.showPosition,this.errorCallback);
   }
 
   errorCallback = (err) => {
-    debugger
     this.setState({
       message_warning: "Es necesario que la geolocalización esté activada"
     })
   }
   showPosition = (location) => {
-    debugger
     let posLat = location.coords.latitude
     let posLng = location.coords.longitude
     this.setState({
@@ -115,8 +113,6 @@ class Dashboard extends React.Component {
     let lat = this.state.size
     let lng = this.state.type
     let description = this.state.description
-    debugger
-    debugger
     let nmessage = ''
     let smessage = ''
     let tmessage = ''
@@ -131,7 +127,6 @@ class Dashboard extends React.Component {
     if (this.state.type == '' || this.state.name == null) {
       tmessage = "The type can't be blank"
     }
-    debugger
     this.setState({
       type_message: tmessage,
       size_message: smessage,
@@ -208,7 +203,6 @@ class Dashboard extends React.Component {
     const params = {
       id: donation.id
     }
-    debugger
     this.props.deleteDonationEvent(auth.headers(), params)
   }
 

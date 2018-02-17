@@ -38,7 +38,6 @@ export function deleteDonationEvent(headers, params) {
   return dispatch => {
     return api.deleteDonationEvent(headers, params)
       .then((json) => {
-        debugger
         dispatch({
           type: DELETED_DONATION,
           data: params,

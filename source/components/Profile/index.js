@@ -34,7 +34,6 @@ import FlatButton                 from 'material-ui/FlatButton';
 
 class Profile extends React.Component {
   constructor (props) {
-    debugger
     super(props);
     this.state = {
       openDialog: false,
@@ -46,7 +45,6 @@ class Profile extends React.Component {
       blood_type_filter: null,
       password_message: null
     }
-    debugger
   }
 
   componentWillMount() {

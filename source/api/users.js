@@ -11,7 +11,6 @@ export function fetchUsers(headers) {
   });
 }
 export function UpdateUser(headers, params) {
-  debugger
   let rUrl = `${generateApiUrl()}/users/${params.id}`;
 
   return apiRequest('PUT', 'users', {

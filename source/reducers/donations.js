@@ -1,7 +1,8 @@
 import {
   RECEIVED_DONATIONS,
   RECEIVED_MY_DONATIONS,
-  DELETED_DONATION
+  DELETED_DONATION,
+  CREATED_DONATION
 }                         from 'constants';
 import { auth }           from 'utilities/auth';
 
