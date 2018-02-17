@@ -3,7 +3,7 @@ import {
   DONATION_EVENT_CREATED,
   CREATED_DONATION,
   RECEIVED_MY_DONATIONS,
-  DELETED_DONATIONS
+  DELETED_DONATION
 }                                       from '../constants';
 import  * as api                        from 'api/donations';
 
