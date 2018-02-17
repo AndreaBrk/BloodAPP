@@ -12,6 +12,7 @@ import MuiThemeProvider         from 'material-ui/styles/MuiThemeProvider';
 import App                      from './containers/App';
 import Profile                  from './components/Profile';
 import LogIn                    from './components/LogIn';
+import SignUp                   from './components/Signup';
 import Dashboard                    from './components/Dashboard';
 
 import {
@@ -19,6 +20,7 @@ import {
   Route,
   Switch
  }                                      from 'react-router-dom';
+import { signUp } from './actions/auth';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
@@ -32,6 +34,7 @@ ReactDOM.render(
       <Router basename="/" component={App}>
         <Switch>
             <Route exact path="/login" component={LogIn} />
+            <Route exact path="/signUp" component={SignUp} />
             <App>
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />

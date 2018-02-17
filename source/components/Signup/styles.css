@@ -1,0 +1,61 @@
+.box {
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  width: 380px;
+}
+
+.paper {
+  padding: 45px 35px;
+}
+
+.paper h3 {
+  font-size: 24px;
+  color: #545252;
+  /* color: #2196F3; */
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.actions {
+  margin-top: 30px;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.button {
+  width: 100%;
+}
+
+.errors {
+  margin: 15px 0;
+}
+
+.error {
+  color: #ff4646 !important;
+}
+
+.error + .error {
+  margin-top: 15px;
+}
+
+.text-reset-pass {
+  color: #FF8F00 !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+}
+
+
+.image-body {
+  /* background-image:linear-gradient(0deg,rgba(80,80,80,0.6),rgba(80,80,80,0.6)),url("images/zoni_min.jpg") !important; */
+  background-image: url(./pattern.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100vh;
+}
