@@ -24,7 +24,6 @@ export default function donationsReducer (state = initialState, action) {
         my_donations: action.data
       }
     case DELETED_DONATION:
-      debugger
       const value = action.data.id
       const arr = state.donations.filter(function(item) { 
           return item.id !== value
@@ -32,6 +31,11 @@ export default function donationsReducer (state = initialState, action) {
       return {
         ...state,
         donations: arr
+      }
+    case CREATED_DONATION:
+      return {
+        ...state,
+        donations: state.donations.push(action.data)
       }
     default:
       return state;
