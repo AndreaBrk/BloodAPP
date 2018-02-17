@@ -36,7 +36,7 @@ export default function donationsReducer (state = initialState, action) {
     case CREATED_DONATION:
     debugger
       let arr_aux = state.donations
-      arr.push(action.data)
+      arr_aux.push(action.data)
       return {
         ...state,
         donations: arr
