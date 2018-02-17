@@ -202,6 +202,11 @@ class Dashboard extends React.Component {
     })
   }
 
+
+  handleDelete = (event, donation) => {
+
+  }
+
   render () {
     return (
       <div className={'container'}>
@@ -303,6 +308,7 @@ class Dashboard extends React.Component {
                 <TableHeaderColumn>Tipo de sangre</TableHeaderColumn>
                 <TableHeaderColumn>Donantes requeridos</TableHeaderColumn>
                 <TableHeaderColumn>Descripcion</TableHeaderColumn>
+                <TableHeaderColumn>Borrar</TableHeaderColumn>
               </TableRow>
             </TableHeader>
 
@@ -313,6 +319,8 @@ class Dashboard extends React.Component {
                   <TableRowColumn>{donation.blood_type || '-'}</TableRowColumn>
                   <TableRowColumn>{donation.size || '-'}</TableRowColumn>
                   <TableRowColumn>{donation.description || '-'}</TableRowColumn>
+                  <TableRowColumn>{donation.user_id == auth.user().id && <RaisedButton label="Borrar" primary={true} onClick={(event) => this.handleDelete.bind(this, event, donation)}
+            />}</TableRowColumn>
                 </TableRow>
               ))}
             </TableBody>
@@ -381,8 +389,6 @@ class Dashboard extends React.Component {
 
               })
             }
-
-
           </Map>
         </div>
       </div>
