@@ -117,7 +117,7 @@ export function logoutUser () {
 
 export function signUp(params) {
   return dispatch => {
-    let rUrl = `${generateApiUrl()}/v1/users/create`;
+    let rUrl = `${generateApiUrl()}/v1/users`;
     return apiRequest('POST', 'user', {
       url: rUrl,
       body: params,
