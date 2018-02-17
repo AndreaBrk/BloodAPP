@@ -63,10 +63,12 @@ class Dashboard extends React.Component {
   }
 
   componentWillMount = () => {
-    navigator.geolocation.getCurrentPosition(this.showPosition);
+    navigator.geolocation.getCurrentPosition(this.showPosition,this.errorCallback, {timeout:10000});
   }
 
-
+  errorCallback = (err) => {
+    debugger
+  }
   showPosition = (location) => {
     debugger
     let posLat = location.coords.latitude
