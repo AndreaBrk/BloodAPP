@@ -87,7 +87,7 @@ class Signup extends React.Component {
     debugger
     let err = []
     Object.keys(errors).map(function(key, index) {
-      err = errors[key]
+      err = key + ' ' + errors[key]
     })
     this.setState({
       errors: err
