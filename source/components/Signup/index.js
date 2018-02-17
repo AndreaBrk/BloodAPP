@@ -36,7 +36,8 @@ class Signup extends React.Component {
       password: null,
       errors: null,
       first_name: null,
-      last_name: null
+      last_name: null,
+      messages: null
     };
   }
 
@@ -56,7 +57,7 @@ class Signup extends React.Component {
     const first_name = this.state.first_name;
     let err = null
     if (!email || !password || !last_name || !first_name) {
-      err = ['Email y Contraseña son requeridos']
+      err = ['El Nombre, Appelido, Email y Contraseña son requeridos']
       this.setState({
         errors: err
       })
@@ -66,9 +67,17 @@ class Signup extends React.Component {
       })
       const creds = { first_name: first_name, last_name: last_name, email: email, password: password };
       this.props.signUp(creds)
+      .then((e) => {
+        this.setMessage("Se le ha enviado un mensaje, revise su casilla y confirme el email")
+      })
     }
   }
 
+  setMessage = (message) => {
+    this.setState({
+      messages: [message]
+    })
+  }
   handleChangeEmail = (event) => {
     this.setState({
       email: event.target.value,
@@ -115,6 +124,16 @@ class Signup extends React.Component {
             {this.state.errors && this.state.errors.map((err, idx) => (
               <div className={styles['error']}>
                 {err}
+              </div>
+            ))}
+            </div>
+            }
+
+            {this.state.messages &&
+            <div className={styles.successful}>
+            {this.state.messages && this.state.messages.map((mes, idx) => (
+              <div className={styles['error']}>
+                {mes}
               </div>
             ))}
             </div>

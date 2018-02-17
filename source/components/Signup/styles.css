@@ -43,6 +43,19 @@
   margin-top: 15px;
 }
 
+
+.successful {
+  margin: 15px 0;
+}
+
+.successful {
+  color: #06e419 !important;
+}
+
+.successful + .successful {
+  margin-top: 15px;
+}
+
 .text-reset-pass {
   color: #FF8F00 !important;
   font-weight: 500 !important;
