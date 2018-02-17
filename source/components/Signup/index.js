@@ -132,7 +132,7 @@ class Signup extends React.Component {
             {this.state.messages &&
             <div className={styles.successful}>
             {this.state.messages && this.state.messages.map((mes, idx) => (
-              <div className={styles['error']}>
+              <div className={styles['successful']}>
                 {mes}
               </div>
             ))}
