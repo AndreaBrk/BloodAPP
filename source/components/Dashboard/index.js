@@ -204,7 +204,7 @@ class Dashboard extends React.Component {
   }
 
 
-  handleDelete = (event, donation) => {
+  handleDelete = (donation) => {
     params = {
       id: donation.id
     }
@@ -324,7 +324,7 @@ class Dashboard extends React.Component {
                   <TableRowColumn>{donation.blood_type || '-'}</TableRowColumn>
                   <TableRowColumn>{donation.size || '-'}</TableRowColumn>
                   <TableRowColumn>{donation.description || '-'}</TableRowColumn>
-                  <TableRowColumn>{donation.user_id == auth.user().id && <RaisedButton label="Borrar" primary={true} onClick={(event) => this.handleDelete.bind(this, event, donation)}
+                  <TableRowColumn>{donation.user_id == auth.user().id && <RaisedButton label="Borrar" primary={true} onClick={this.handleDelete.bind(this, donation)}
             />}</TableRowColumn>
                 </TableRow>
               ))}
