@@ -34,10 +34,11 @@ export default function donationsReducer (state = initialState, action) {
         donations: arr
       }
     case CREATED_DONATION:
-    debugger
+      let arr = state.donations
+      arr.push(action.data)
       return {
         ...state,
-        donations: state.donations.push(action.data)
+        donations: arr
       }
     default:
       return state;
