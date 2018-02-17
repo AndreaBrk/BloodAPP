@@ -169,29 +169,6 @@ class Profile extends React.Component {
             onClick={(event) => this.handleClick(event)}
           />
         </div>
-        <div>
-        <div>
-          Filtros:
-          <TextField
-            hintText="Blood Type"
-            ref='blood_type_filter'
-            className={styles['field']}
-            underlineShow={false}
-            value={this.state.blood_type_filter}
-            onChange={this.handleBloodTypeFilter}
-          />
-
-          <RaisedButton
-            label="Submit"
-            primary={true}
-            className={styles['button']}
-            onClick={(event) => this.handleFilter(event)}
-          />
-        </div>
-        </div>
-        <div>
-          {this.state.openDialog && <EditDialog name={this.state.donation.name} type={this.state.donation.blood_type} size={this.state.donation.size} id={this.state.donation.id} handleClose={this.state.handleClose} />}
-        </div>
       </div>
     );
   }
