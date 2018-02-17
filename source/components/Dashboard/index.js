@@ -59,6 +59,7 @@ class Dashboard extends React.Component {
       activeMarker: [],
       selectedPlace: {},
       onlyMine: false,
+      message_warning: "Actualmente no se registran pedidos de donaciones."
     }
   }
 
@@ -67,7 +68,9 @@ class Dashboard extends React.Component {
   }
 
   errorCallback = (err) => {
-    debugger
+    this.setState({
+      message_warning: "Es necesario que la geolocalización esté activada"
+    })
   }
   showPosition = (location) => {
     debugger
@@ -315,7 +318,7 @@ class Dashboard extends React.Component {
           </Table>
         </div>
         :
-        <NoData />
+        <NoData message={this.state.message_warning}/>
         }
 
         <header>

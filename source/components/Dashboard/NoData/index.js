@@ -8,6 +8,6 @@ import styles       from './styles.css';
 export default (props) => (
   <div className={styles['no-data']}>
     <ReportIcon color="#9e9e9e" style={{ marginRight: 15, height: 32, width: 32 }} />
-    <span>Actualmente no se registran pedidos de donaciones.</span>
+    <span>props.message</span>
   </div>
 )
