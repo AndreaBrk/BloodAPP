@@ -24,14 +24,12 @@ export default function donationsReducer (state = initialState, action) {
         my_donations: action.data
       }
     case DELETED_DONATION:
+      debugger
       let value = action.id
-
       let arr
-
       arr = arr.filter(function(item) { 
           return item.id !== value
       })
-
       return {
         ...state,
         donations: action.data
