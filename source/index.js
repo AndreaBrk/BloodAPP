@@ -34,7 +34,7 @@ ReactDOM.render(
         <Switch>
             <Route exact path="/login" component={LogIn} />
             <Route exact path="/signUp" component={SignUp} />
-            <Route exact path="/" component={dashboard}/>
+            <Route exact path="/" component={Dashboard}/>
             <App>
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
