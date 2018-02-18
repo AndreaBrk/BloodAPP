@@ -388,11 +388,12 @@ class Dashboard extends React.Component {
 
               })
             }
-
-            <Marker
-              name={'Posicion actual'}
-              position={{lat: this.state.lat, lng: this.state.lng}} />
-            <Marker />
+            { this.state.lat && this.state.lng
+              <Marker
+                name={'Posicion actual'}
+                position={{lat: this.state.lat, lng: this.state.lng}} />
+              <Marker />
+            }
           </Map>
         </div>
       </div>
