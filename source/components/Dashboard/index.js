@@ -394,7 +394,8 @@ class Dashboard extends React.Component {
                     marker={this.state.activeMarker[donation.id]}
                     visible={this.state.showingInfoWindow[donation.id]}>
                       <div>
-                        <h1>{donation.blood_type || '-'}</h1>
+                        <h4>{donation.name || '-'}</h4>
+                        <p>{donation.blood_type || '-'}</p>
                       </div>
                   </InfoWindow>]
               })
