@@ -316,7 +316,7 @@ class Dashboard extends React.Component {
           </div>
 
           <div className={'col-12'}>
-            <p className={this.state.posEsNull && styles.error}>Determine el lugar del evento en el mapa </p>
+            <p className={!this.state.posEsNull && styles.error}>Determine el lugar del evento en el mapa </p>
           </div>
         </div>
 
