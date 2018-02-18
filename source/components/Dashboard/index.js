@@ -113,6 +113,8 @@ class Dashboard extends React.Component {
     const type = this.state.type
     const lat = this.state.lat
     const lng = this.state.lng
+    const posLat = this.state.posLat
+    const Poslng = this.state.Poslng
     let description = this.state.description
     let nmessage = ''
     let smessage = ''
@@ -152,7 +154,7 @@ class Dashboard extends React.Component {
         lat: null,
         lng: null
       })
-      const creds = { name, size, type , lat, lng, description }
+      const creds = { name, size, type , lat, lng, description, posLat, posLng }
       this.props.createDonationEvent(auth.headers(), creds)
     }
   }

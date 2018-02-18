@@ -36,10 +36,7 @@ export default function donationsReducer (state = initialState, action) {
     case CREATED_DONATION:
       return {
         ...state,
-        donations: [
-          ...state.donations,
-          action.data
-        ]
+        donations: action.data
       }
     default:
       return state;
