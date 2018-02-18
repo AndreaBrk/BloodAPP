@@ -1,3 +1,7 @@
+/**
+ NOTE This file is ONLY for local development, there isn't any need to check
+ environment. For heroku we have app-heroku.js
+*/
 
 var path = require('path');
 var express = require('express');
@@ -8,17 +12,12 @@ var config = process.env.NODE_ENV === 'production' ? require('./webpack.config')
 var app = express();
 var compiler = webpack(config);
 
-const {
-  HOST = 'localhost',
-  PORT = 4000
-} = process.env;
-
-
-app.use(require('webpack-dev-middleware')(compiler, {
-  noInfo: true,
-  publicPath: config.output.publicPath
-}));
-
+if (process.env.NODE_ENV === 'development') {
+  app.use(require('webpack-dev-middleware')(compiler, {
+    noInfo: true,
+    publicPath: config.output.publicPath
+  }));
+}
 
 app.get('/reset.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'reset.css'));
@@ -59,6 +58,11 @@ if (process.env.NODE_ENV === 'production') {
       console.log('App is running, server is listening on port ', app.get('port'));
   });
 } else {
+  const {
+    HOST = 'localhost',
+    PORT = 4000
+  } = process.env;
+
   // Esto es para trabajar en modo desarrollo
   app.listen(PORT, HOST, function (err) {
     if (err) {

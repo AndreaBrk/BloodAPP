@@ -270,6 +270,10 @@ class Dashboard extends React.Component {
               onChange={this.handleChangeDescription}
             />
           </div>
+
+          <div className={'col-12'}>
+            <p className={'warring'}>Determine el lugar del evento en el mapa </p>
+          </div>
         </div>
 
         <div className={'row'}>
