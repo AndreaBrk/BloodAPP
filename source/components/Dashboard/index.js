@@ -337,7 +337,7 @@ class Dashboard extends React.Component {
             </TableHeader>
 
             <TableBody displayRowCheckbox={false}>
-              {this.props.donations && this.row(this.props.donations)}
+              {this.row(this.props.donations)}
             </TableBody>
           </Table>
         </div>
