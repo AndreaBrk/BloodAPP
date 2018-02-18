@@ -386,42 +386,43 @@ class Dashboard extends React.Component {
             />
           </div>
         </div>
-
-        <div className={styles['map-wrapper']}>
-          <Map
-            style={{ width: '100%'}}
-            google={this.props.google}
-            onClick={this.onMapClicked}
-            defaultCenter={{ lat: this.state.posLat, lng: this.state.posLng }}
-            initialCenter={{
-              lat: this.state.posLat,
-              lng:this.state.posLng
-            }}
-          >
-            { _.map(this.props.donations, (donation, donation_idx) => {
-                return [<Marker
-                    position={{ lat: donation.lat, lng: donation.lng }}
-                    onClick={this.onToggleOpen.bind(this, donation.id)}
-                  >
-                  </Marker>,
-                  <InfoWindow
-                    marker={this.state.activeMarker[donation.id]}
-                    visible={this.state.showingInfoWindow[donation.id]}>
-                      <div>
-                        <h4>{donation.name || '-'}</h4>
-                        <p>{donation.blood_type || '-'}</p>
-                      </div>
-                  </InfoWindow>]
-              })
-            }
-            { this.state.lat && this.state.lng &&
-              <Marker
-                name={'Posicion actual'}
-                position={{lat: this.state.lat, lng: this.state.lng}} 
-              />
-            }
-          </Map>
-        </div>
+        {this.state.posLat && this.state.posLng &&
+          <div className={styles['map-wrapper']}>
+            <Map
+              style={{ width: '100%'}}
+              google={this.props.google}
+              onClick={this.onMapClicked}
+              defaultCenter={{ lat: this.state.posLat, lng: this.state.posLng }}
+              initialCenter={{
+                lat: this.state.posLat,
+                lng:this.state.posLng
+              }}
+            >
+              { _.map(this.props.donations, (donation, donation_idx) => {
+                  return [<Marker
+                      position={{ lat: donation.lat, lng: donation.lng }}
+                      onClick={this.onToggleOpen.bind(this, donation.id)}
+                    >
+                    </Marker>,
+                    <InfoWindow
+                      marker={this.state.activeMarker[donation.id]}
+                      visible={this.state.showingInfoWindow[donation.id]}>
+                        <div>
+                          <h4>{donation.name || '-'}</h4>
+                          <p>{donation.blood_type || '-'}</p>
+                        </div>
+                    </InfoWindow>]
+                })
+              }
+              { this.state.lat && this.state.lng &&
+                <Marker
+                  name={'Posicion actual'}
+                  position={{lat: this.state.lat, lng: this.state.lng}} 
+                />
+              }
+            </Map>
+          </div>
+          }
       </div>
     );
   }
