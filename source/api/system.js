@@ -88,8 +88,8 @@ export function apiRequest(method: string, type: string, data: { url: string, bo
       if (response && response.status == 401) {
         auth.clear()
         // auth.clear
-        history.push('/login');
-        this.props.history.push('/recover_password');
+        // history.push('/login');
+        this.props.history.push('/login');
         return null
       }
       
