@@ -217,6 +217,8 @@ class Dashboard extends React.Component {
     this.setState({
       onlyMine: checked
     })
+
+    this.props.fetchMyDonations()
   }
 
 
