@@ -62,7 +62,8 @@ class Dashboard extends React.Component {
       selectedPlace: {},
       onlyMine: false,
       message_warning: "Actualmente no se registran pedidos de donaciones.",
-      isPos: true
+      isPos: true,
+      posEsNull: true
     }
   }
 
@@ -140,7 +141,8 @@ class Dashboard extends React.Component {
       type_message: tmessage,
       size_message: smessage,
       name_message: nmessage,
-      isPos: visPos
+      isPos: visPos,
+      posEsNull: visPos
     })
     if ((tmessage == '' && smessage== '' && nmessage == '' && visPos)) {
       debugger
@@ -155,7 +157,8 @@ class Dashboard extends React.Component {
         type: '',
         description: '',
         lat: null,
-        lng: null
+        lng: null,
+        posEsNull: true
       })
       const creds = { name, size, type , lat, lng, description }
       this.setState({
@@ -313,7 +316,7 @@ class Dashboard extends React.Component {
           </div>
 
           <div className={'col-12'}>
-            <p className={this.state.lat == null && styles.error}>Determine el lugar del evento en el mapa </p>
+            <p className={this.state.posEsNull && styles.error}>Determine el lugar del evento en el mapa </p>
           </div>
         </div>
 
