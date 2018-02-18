@@ -89,7 +89,7 @@ export function apiRequest(method: string, type: string, data: { url: string, bo
         auth.clear()
         // auth.clear
         // history.push('/login');
-        this.props.history.push('/login');
+        window.location.href='/login';
         return null
       }
       
