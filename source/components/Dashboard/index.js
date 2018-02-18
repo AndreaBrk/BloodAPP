@@ -323,7 +323,7 @@ class Dashboard extends React.Component {
             </TableHeader>
 
             <TableBody displayRowCheckbox={false}>
-              {_.map(this.props.donations, (donation, donation_idx) => (
+              {this.props.donations && _.map(this.props.donations, (donation, donation_idx) => (
                 <TableRow key={donation.id}>
                   <TableRowColumn>{donation.name || '-'}</TableRowColumn>
                   <TableRowColumn>{donation.blood_type || '-'}</TableRowColumn>
