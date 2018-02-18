@@ -39,7 +39,10 @@ export default function donationsReducer (state = initialState, action) {
       arr_aux.push(action.data)
       return {
         ...state,
-        donations: arr_aux
+        donations: [
+          ...state.donations,
+          action.data
+        ]
       }
     default:
       return state;
