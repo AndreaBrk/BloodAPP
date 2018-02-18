@@ -153,7 +153,7 @@ class LogIn extends React.Component {
               backgroundColor={blue500}
               labelColor={"#fff"}
               className={styles['button']}
-              onClick={(event) => this.props.history.push('/signup');}
+              onClick={(event) => this.props.history.push('/signup')}
             />
           </div>
         </div>
