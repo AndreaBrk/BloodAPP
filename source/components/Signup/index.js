@@ -85,13 +85,13 @@ class Signup extends React.Component {
 
   setErrors = (errors) => {
     debugger
-    let err = []
+    let error_a = []
     _.map(err.errors, (value, key) => {
       key = _.camelCase(key)
-      err.push(key.concat(" ").concat(value[0]))
+      error_a.push(key.concat(" ").concat(value[0]))
     });
     this.setState({
-      errors: err
+      errors: error_a
     })
   }
 
