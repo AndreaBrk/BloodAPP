@@ -16,6 +16,7 @@ import SignUp                   from './components/Signup';
 import Dashboard                    from './components/Dashboard';
 
 import {
+  Redirect,
   BrowserRouter as Router,
   Route,
   Switch
@@ -35,9 +36,9 @@ ReactDOM.render(
             <Route exact path="/login" component={LogIn} />
             <Route exact path="/signUp" component={SignUp} />
             <App>
-              <IndexRoute component={Dashboard}/>
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <Route component={<Redirect to="/dashboard" push />} />
             </App>
         </Switch>
       </Router>
