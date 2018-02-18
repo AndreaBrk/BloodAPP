@@ -34,10 +34,10 @@ ReactDOM.render(
         <Switch>
             <Route exact path="/login" component={LogIn} />
             <Route exact path="/signUp" component={SignUp} />
+            <Route exact path="/" component={dashboard}/>
             <App>
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <Route component={<Redirect to="/dashboard" push />} />
             </App>
         </Switch>
       </Router>
