@@ -8,6 +8,10 @@
   margin-bottom: 60px;
 }
 
+.error {
+  color: #F44336 !important
+}
+
 @media(min-width:768px){}
 
 @media(min-width:992px){}

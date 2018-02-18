@@ -108,36 +108,43 @@ class Dashboard extends React.Component {
   };
 
   handleClick = (event) => {
-    let name = this.state.name
-    let size = this.state.size
-    let type = this.state.type
-    let lat = this.state.size
-    let lng = this.state.type
+    const name = this.state.name
+    const size = this.state.size
+    const type = this.state.type
+    const lat = this.state.lat
+    const lng = this.state.lng
     let description = this.state.description
     let nmessage = ''
     let smessage = ''
     let tmessage = ''
-    if (this.state.name == "" || this.state.name == null) {
-      nmessage = "The name can't be blank"
+    let isPos = true
+    if (name == "" || name == null) {
+      nmessage = "El nombre no puede ser vacío"
     }
 
-    if  (this.state.size == 0 || this.state.name == null) {
-      smessage = "The size must be greater than 0"
+    if  (size == 0 || size == null) {
+      smessage = "La cantidad debe ser mayor a 0"
     }
 
-    if (this.state.type == '' || this.state.name == null) {
-      tmessage = "The type can't be blank"
+    if (type == '' || type == null) {
+      tmessage = "El tipo no puede ser vacío"
+    }
+
+    if (lat == '' || lat == null ||lng == '' || lng == null) {
+      isPos = false
     }
     this.setState({
       type_message: tmessage,
       size_message: smessage,
-      name_message: nmessage
+      name_message: nmessage,
+      isPos
     })
     if ((tmessage == '' && smessage== '' && nmessage == '')) {
       this.setState({
         type_message: '',
         size_message: '',
-        name_message: ''
+        name_message: '',
+        isPos: true
       })
       const creds = { name, size, type , lat, lng, description }
       this.props.createDonationEvent(auth.headers(), creds)
@@ -273,7 +280,7 @@ class Dashboard extends React.Component {
           </div>
 
           <div className={'col-12'}>
-            <p className={this.state.isPos && 'error'}>Determine el lugar del evento en el mapa </p>
+            <p className={!this.state.isPos && styles.error}>Determine el lugar del evento en el mapa </p>
           </div>
         </div>
 
@@ -348,7 +355,6 @@ class Dashboard extends React.Component {
               hintText="Tipo de sangre"
               fullWidth={true}
               style={{ minWidth: 150, marginRight: 15 }}
-              errorText={this.state.type_message}
               value={this.state.blood_type_filter}
               onChange={this.handleBloodTypeFilter}
             >
@@ -365,6 +371,7 @@ class Dashboard extends React.Component {
             <RaisedButton
               label="Filtrar"
               primary={true}
+              disabled={this.props.donations.length <= 0}
               onClick={(event) => this.handleFilter(event)}
             />
           </div>
@@ -390,7 +397,6 @@ class Dashboard extends React.Component {
                         <h1>{donation.blood_type || '-'}</h1>
                       </div>
                   </InfoWindow>]
-
               })
             }
             { this.state.lat && this.state.lng &&
