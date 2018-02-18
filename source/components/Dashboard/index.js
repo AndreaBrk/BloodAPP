@@ -139,7 +139,7 @@ class Dashboard extends React.Component {
       name_message: nmessage,
       isPos
     })
-    if ((tmessage == '' && smessage== '' && nmessage == '')) {
+    if ((tmessage == '' && smessage== '' && nmessage == '' && isPos)) {
       this.setState({
         type_message: '',
         size_message: '',
