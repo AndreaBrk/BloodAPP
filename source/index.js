@@ -31,11 +31,11 @@ ReactDOM.render(
   <Provider store={store} key="provider">
     <MuiThemeProvider>
       <Router basename="/" component={App}>
-        <IndexRoute component={Dashboard}/>
         <Switch>
             <Route exact path="/login" component={LogIn} />
             <Route exact path="/signUp" component={SignUp} />
             <App>
+              <IndexRoute component={Dashboard}/>
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </App>
