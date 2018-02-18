@@ -108,31 +108,31 @@ class Dashboard extends React.Component {
   };
 
   handleClick = (event) => {
-    const name = this.state.name
-    const size = this.state.size
-    const type = this.state.type
-    const lat = this.state.lat
-    const lng = this.state.lng
-    const posLat = this.state.posLat
-    const posLng = this.state.Poslng
+    const vname = this.state.name
+    const vsize = this.state.size
+    const vtype = this.state.type
+    const vlat = this.state.lat
+    const vlng = this.state.lng
+    const vposLat = this.state.posLat
+    const vposLng = this.state.Poslng
     let description = this.state.description
     let nmessage = ''
     let smessage = ''
     let tmessage = ''
     let isPos = true
-    if (name == "" || name == null) {
+    if (vname == "" || vname == null) {
       nmessage = "El nombre no puede ser vacío"
     }
 
-    if  (size == 0 || size == null) {
+    if  (vsize == 0 || vsize == null) {
       smessage = "La cantidad debe ser mayor a 0"
     }
 
-    if (type == '' || type == null) {
+    if (vtype == '' || vtype == null) {
       tmessage = "El tipo no puede ser vacío"
     }
 
-    if (lat == '' || lat == null ||lng == '' || lng == null) {
+    if (vlat == '' || vlat == null ||vlng == '' || vlng == null) {
       isPos = false
     }
     this.setState({
@@ -143,6 +143,7 @@ class Dashboard extends React.Component {
     })
     if ((tmessage == '' && smessage== '' && nmessage == '' && isPos)) {
       debugger
+      isPos = true
       this.setState({
         type_message: '',
         size_message: '',
