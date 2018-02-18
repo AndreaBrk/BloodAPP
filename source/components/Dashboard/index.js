@@ -388,7 +388,7 @@ class Dashboard extends React.Component {
 
               })
             }
-            { this.state.lat && this.state.lng
+            { this.state.lat && this.state.lng &&
               <Marker
                 name={'Posicion actual'}
                 position={{lat: this.state.lat, lng: this.state.lng}} />
