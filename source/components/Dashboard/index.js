@@ -393,6 +393,10 @@ class Dashboard extends React.Component {
             google={this.props.google}
             onClick={this.onMapClicked}
             defaultCenter={{ lat: this.state.posLat, lng: this.state.posLng }}
+            initialCenter={{
+              lat: this.state.posLat,
+              lng:this.state.posLng
+            }}
           >
             { _.map(this.props.donations, (donation, donation_idx) => {
                 return [<Marker
