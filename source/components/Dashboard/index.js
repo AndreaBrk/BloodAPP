@@ -272,7 +272,7 @@ class Dashboard extends React.Component {
           </div>
 
           <div className={'col-12'}>
-            <p className={'warring'}>Determine el lugar del evento en el mapa </p>
+            <p className={this.state. 'error'}>Determine el lugar del evento en el mapa </p>
           </div>
         </div>
 
