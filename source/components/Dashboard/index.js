@@ -386,7 +386,6 @@ class Dashboard extends React.Component {
             <RaisedButton
               label="Filtrar"
               primary={true}
-              disabled={this.props.donations.length <= 0}
               onClick={(event) => this.handleFilter(event)}
             />
           </div>
