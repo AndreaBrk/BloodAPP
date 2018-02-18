@@ -216,7 +216,7 @@ class Dashboard extends React.Component {
 
 
   row = (donations) => {
-    _.map(donations, (donation, donation_idx) => (
+    return _.map(donations, (donation, donation_idx) => (
       <TableRow key={donation.id}>
         <TableRowColumn>{donation.name || '-'}</TableRowColumn>
         <TableRowColumn>{donation.blood_type || '-'}</TableRowColumn>
