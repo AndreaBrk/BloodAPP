@@ -13,9 +13,9 @@ import { List, ListItem }        from 'material-ui/List';
 import { auth }                  from 'utilities/auth';
 import { generateApiUrl }        from 'api/system'
 import FlatButton                from 'material-ui/FlatButton';
-import { blue500 } from 'material-ui/styles/colors';
+import { blue500 }               from 'material-ui/styles/colors';
 // import bg from './pattern.svg';
-import { debuglog } from 'util';
+import { debuglog }              from 'util';
 
 
 class Signup extends React.Component {
