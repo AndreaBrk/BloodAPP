@@ -1,13 +1,8 @@
-/**
- NOTE This file is ONLY for local development, there isn't any need to check
- environment. For heroku we have app-heroku.js
-*/
 
 var path = require('path');
 var express = require('express');
 var webpack = require('webpack');
 
-// var config = require('./webpack.config');
 var config = process.env.NODE_ENV === 'production' ? require('./webpack.config') : require('./webpack.config.dev');
 
 var app = express();
@@ -17,7 +12,6 @@ const {
   HOST = 'localhost',
   PORT = 4000
 } = process.env;
-
 
 
 app.use(require('webpack-dev-middleware')(compiler, {
@@ -55,11 +49,23 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(PORT, HOST, function (err) {
-  if (err) {
-    console.log(err);
-    return;
-  }
+if (process.env.NODE_ENV === 'production') {
+  // Asi se configura para Heroku
+  app.set('port', (process.env.PORT || 5000));
+  app.get('/', function(request, response) {
+      var result = 'App is running'
+      response.sendFile(path.join(__dirname, 'index.html'));
+  }).listen(app.get('port'), function() {
+      console.log('App is running, server is listening on port ', app.get('port'));
+  });
+} else {
+  // Esto es para trabajar en modo desarrollo
+  app.listen(PORT, HOST, function (err) {
+    if (err) {
+      console.log(err);
+      return;
+    }
 
-  console.log(`Listening at http://${HOST}:${PORT}`);
-});
+    console.log(`Listening at http://${HOST}:${PORT}`);
+  });
+}
