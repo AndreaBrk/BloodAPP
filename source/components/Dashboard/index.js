@@ -314,7 +314,6 @@ class Dashboard extends React.Component {
               adjustForCheckbox={false}
             >
               <TableRow>
-                <TableHeaderColumn>ID</TableHeaderColumn>
                 <TableHeaderColumn>Solicitante</TableHeaderColumn>
                 <TableHeaderColumn>Tipo de sangre</TableHeaderColumn>
                 <TableHeaderColumn>Donantes requeridos</TableHeaderColumn>
