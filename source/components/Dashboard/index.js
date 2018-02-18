@@ -119,7 +119,7 @@ class Dashboard extends React.Component {
     let nmessage = ''
     let smessage = ''
     let tmessage = ''
-    let isPos = true
+    let visPos = true
     if (vname == "" || vname == null) {
       nmessage = "El nombre no puede ser vacío"
     }
@@ -133,17 +133,16 @@ class Dashboard extends React.Component {
     }
 
     if (vlat == '' || vlat == null ||vlng == '' || vlng == null) {
-      isPos = false
+      visPos = false
     }
     this.setState({
       type_message: tmessage,
       size_message: smessage,
       name_message: nmessage,
-      isPos
+      isPos: visPos
     })
-    if ((tmessage == '' && smessage== '' && nmessage == '' && isPos)) {
+    if ((tmessage == '' && smessage== '' && nmessage == '' && visPos)) {
       debugger
-      isPos = true
       this.setState({
         type_message: '',
         size_message: '',
