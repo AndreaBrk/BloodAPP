@@ -225,7 +225,7 @@ class Dashboard extends React.Component {
       onlyMine: checked
     })
 
-    this.props.fetchMyDonations()
+    this.props.fetchMyDonations(auth.headers())
   }
 
 
