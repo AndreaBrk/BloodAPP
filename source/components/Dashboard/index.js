@@ -5,7 +5,8 @@ import styles                    from './styles.css';
 import {
   fetchDonations,
   createDonationEvent,
-  deleteDonationEvent
+  deleteDonationEvent,
+  fetchMyDonations
 }                                 from 'actions/donations';
 import { auth }                   from 'utilities/auth';
 import GoogleMapReact             from 'google-map-react';
@@ -157,6 +158,9 @@ class Dashboard extends React.Component {
         lng: null
       })
       const creds = { name, size, type , lat, lng, description }
+      this.setState({
+        isPos: true
+      })
       this.props.createDonationEvent(auth.headers(), creds)
       .then(() => {
         this.props.fetchData(auth.headers(), {posLat, posLng})
@@ -450,6 +454,7 @@ function mapDispatchToProps (dispatch) {
     fetchData: bindActionCreators(fetchDonations, dispatch),
     createDonationEvent: bindActionCreators(createDonationEvent, dispatch),
     deleteDonationEvent: bindActionCreators(deleteDonationEvent, dispatch),
+    fetchMyDonations: bindActionCreators(fetchMyDonations, dispatch)
   };
 }
 
