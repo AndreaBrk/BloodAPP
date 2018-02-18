@@ -60,7 +60,8 @@ class Dashboard extends React.Component {
       activeMarker: [],
       selectedPlace: {},
       onlyMine: false,
-      message_warning: "Actualmente no se registran pedidos de donaciones."
+      message_warning: "Actualmente no se registran pedidos de donaciones.",
+      isPos: true
     }
   }
 
@@ -272,7 +273,7 @@ class Dashboard extends React.Component {
           </div>
 
           <div className={'col-12'}>
-            <p className={this.state. 'error'}>Determine el lugar del evento en el mapa </p>
+            <p className={this.state.isPos && 'error'}>Determine el lugar del evento en el mapa </p>
           </div>
         </div>
 
