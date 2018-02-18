@@ -114,7 +114,7 @@ class Dashboard extends React.Component {
     const lat = this.state.lat
     const lng = this.state.lng
     const posLat = this.state.posLat
-    const poslng = this.state.Poslng
+    const posLng = this.state.Poslng
     let description = this.state.description
     let nmessage = ''
     let smessage = ''
