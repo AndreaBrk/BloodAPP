@@ -12,7 +12,7 @@ var config = process.env.NODE_ENV === 'production' ? require('./webpack.config')
 var app = express();
 var compiler = webpack(config);
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV !== 'production') {
   app.use(require('webpack-dev-middleware')(compiler, {
     noInfo: true,
     publicPath: config.output.publicPath
@@ -47,7 +47,7 @@ app.get('/react-contextmenu.css', function (req, res) {
 app.get('/static/index.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'build/index.js'));
   });
-  
+
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
