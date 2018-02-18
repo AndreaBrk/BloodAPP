@@ -144,7 +144,13 @@ class Dashboard extends React.Component {
         type_message: '',
         size_message: '',
         name_message: '',
-        isPos: true
+        isPos: true,
+        size: null,
+        name: '',
+        type: '',
+        description: '',
+        lat: null,
+        lng: null
       })
       const creds = { name, size, type , lat, lng, description }
       this.props.createDonationEvent(auth.headers(), creds)
@@ -386,7 +392,7 @@ class Dashboard extends React.Component {
             style={{ width: '100%'}}
             google={this.props.google}
             onClick={this.onMapClicked}
-            defaultCenter={{ lat: -38, lng: -62 }}
+            defaultCenter={{ lat: this.state.posLat, lng: this.state.posLng }}
           >
             { _.map(this.props.donations, (donation, donation_idx) => {
                 return [<Marker
