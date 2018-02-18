@@ -5,7 +5,6 @@ import { auth }                 from 'utilities/auth';
 import { Provider }             from 'react-redux';
 import {
   IndexRoute,
-  Redirect,
   browserHistory
 }                               from 'react-router';
 import MuiThemeProvider         from 'material-ui/styles/MuiThemeProvider';
