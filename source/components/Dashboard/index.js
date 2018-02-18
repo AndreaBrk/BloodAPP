@@ -214,6 +214,20 @@ class Dashboard extends React.Component {
     this.props.deleteDonationEvent(auth.headers(), params)
   }
 
+
+  row = (donations) => {
+    _.map(donations, (donation, donation_idx) => (
+      <TableRow key={donation.id}>
+        <TableRowColumn>{donation.name || '-'}</TableRowColumn>
+        <TableRowColumn>{donation.blood_type || '-'}</TableRowColumn>
+        <TableRowColumn>{donation.size || '-'}</TableRowColumn>
+        <TableRowColumn>{donation.description || '-'}</TableRowColumn>
+        <TableRowColumn>{donation.user_id == auth.user().id && <RaisedButton label="Borrar" primary={true} onClick={this.handleDelete.bind(this, donation)}
+      />}</TableRowColumn>
+      </TableRow>
+    ))
+  }
+
   render () {
     return (
       <div className={'container'}>
@@ -323,16 +337,7 @@ class Dashboard extends React.Component {
             </TableHeader>
 
             <TableBody displayRowCheckbox={false}>
-              {this.props.donations && _.map(this.props.donations, (donation, donation_idx) => (
-                <TableRow key={donation.id}>
-                  <TableRowColumn>{donation.name || '-'}</TableRowColumn>
-                  <TableRowColumn>{donation.blood_type || '-'}</TableRowColumn>
-                  <TableRowColumn>{donation.size || '-'}</TableRowColumn>
-                  <TableRowColumn>{donation.description || '-'}</TableRowColumn>
-                  <TableRowColumn>{donation.user_id == auth.user().id && <RaisedButton label="Borrar" primary={true} onClick={this.handleDelete.bind(this, donation)}
-            />}</TableRowColumn>
-                </TableRow>
-              ))}
+              {this.props.donations && this.row(this.props.donations)}
             </TableBody>
           </Table>
         </div>
