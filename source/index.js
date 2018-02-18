@@ -38,7 +38,7 @@ ReactDOM.render(
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </App>
-            <Route component={<Redirect to="/dashboard" push />} />
+            <Redirect from="/" to="/dashboard"/>
         </Switch>
       </Router>
     </MuiThemeProvider>
