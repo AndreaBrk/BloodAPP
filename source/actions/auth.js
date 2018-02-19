@@ -71,18 +71,15 @@ export function loginUser (creds) {
   }
 }
 
-export function resetPassword(creds: Object) {
-  let config = {
-    method: 'POST',
-    mode: 'cors',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      email: creds.email,
-      redirect_url: creds.redirect_url,
-    })
+export function resetPassword(params: Object) {
+  return dispatch => {
+    let rUrl = `${generateApiUrl()}/auth/password`;
+    return apiRequest('POST', 'user', {
+      url: rUrl,
+      body: params,
+      headers: null
+    });
+  }
   };
 
   return dispatch => {
