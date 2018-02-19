@@ -44,6 +44,8 @@ class Profile extends React.Component {
       blood_type_filter: null,
       password_message: null,
     }
+  }
+  componentWillMount = () => {
     this.props.getUser(auth.headers(), {id: auth.user.id})
   }
 
