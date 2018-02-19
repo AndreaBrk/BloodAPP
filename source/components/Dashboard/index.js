@@ -159,7 +159,7 @@ class Dashboard extends React.Component {
         lng: null,
         posEsNull: true
       })
-      const creds = { vname, vsize, vtype , vlat, vlng, description }
+      const creds = { name: vname, size: vsize, type: vtype , lat: vlat, lng: vlng, description }
       this.setState({
         isPos: true
       })
