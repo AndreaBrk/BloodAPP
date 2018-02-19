@@ -73,7 +73,7 @@ export function loginUser (creds) {
 
 export function resetPassword(params: Object) {
   return dispatch => {
-    let rUrl = `${generateApiUrl()}/users/reset_password`;
+    let rUrl = `${generateApiUrl()}/v1/users/reset_password`;
     return apiRequest('POST', 'user', {
       url: rUrl,
       body: params,
