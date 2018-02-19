@@ -57,12 +57,10 @@ class ResetPass extends React.Component {
       })
       const creds = { email: email};
       this.props.resetPassword(creds)
-      .then((e) => {
-        this.setMessage("Se le ha enviado un mensaje, revise su casilla de emails")
-      })
       .catch((errors) => {
         this.setErrors(errors.errors)
       })
+      this.setMessage("Se le ha enviado un mensaje, revise su casilla de emails")
     }
   }
 
