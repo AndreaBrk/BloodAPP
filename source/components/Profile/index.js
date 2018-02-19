@@ -48,7 +48,7 @@ class Profile extends React.Component {
   }
 
   handleClick = (url) => {
-    if (this.state.password.length < 8) {
+    if (this.state.password && this.state.password.length < 8) {
       this.setState({
         password_message: 'The password is too short',
       });
