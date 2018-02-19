@@ -65,16 +65,6 @@ class AppBar extends React.Component {
               anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
               targetOrigin={{horizontal: 'left', vertical: 'top'}}
               iconButtonElement={
-                <IconButton touch={false}>
-                  <Notifications color="#fff" />
-                </IconButton>
-              }
-            >
-            </IconMenu>
-            <IconMenu
-              anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-              targetOrigin={{horizontal: 'left', vertical: 'top'}}
-              iconButtonElement={
                 <IconButton touch={true}>
                   <Person color="#fff" />
                 </IconButton>
