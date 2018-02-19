@@ -57,6 +57,14 @@ class Profile extends React.Component {
         password_message: null
       });
       this.props.UpdateUser(auth.headers(), {id: auth.user().id, email: this.state.email, first_name: this.state.first_name, last_name: this.state.last_name, blood_type: this.state.blood_type, password: this.state.password})
+      .then(() => {
+        this.setState({
+          nombre: this.state.first_name,
+          apellido: this.state.last_name,
+          last_name: null,
+          last_name: null
+        })
+      })
     }
   }
 
