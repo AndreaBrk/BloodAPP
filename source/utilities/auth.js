@@ -26,6 +26,9 @@ export const auth = {
 
     return user;
   },
+  setName: (name) => {
+
+  },
   headers: () => {
     if (!hasLocalStorage()) { return false; }
     let headers = {

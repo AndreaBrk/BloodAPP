@@ -6,7 +6,8 @@ import {
   fetchMyDonations,
   createDonationEvent,
 }                                 from 'actions/donations';
-import { 
+import {
+  getUser,
   UpdateUser
 }                                 from 'actions/users';
 import { auth }                   from 'utilities/auth';
@@ -36,15 +37,16 @@ class Profile extends React.Component {
     this.state = {
       openDialog: false,
       donation: null,
-      first_name: auth.user().first_name,
-      last_name: auth.user().last_name,
-      email: auth.user().email,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
       password: null,
       blood_type_filter: null,
       password_message: null,
-      nombre: auth.user().first_name,
-      apellido: auth.user().last_name
+      nombre: user.first_name,
+      apellido: user.last_name
     }
+    this.props.getUser(auth.headers(), {id: auth.user.id})
   }
 
   handleClick = (url) => {
@@ -164,11 +166,13 @@ class Profile extends React.Component {
 function mapStateToProps (state) {
   return {
     donations: state.donations.my_donations,
+    user: state.auth.user
   };
 };
 function mapDispatchToProps (dispatch) {
   return {
-    UpdateUser: bindActionCreators(UpdateUser, dispatch)
+    UpdateUser: bindActionCreators(UpdateUser, dispatch),
+    getUser: bindActionCreators(getUser, dispatch)
   };
 }
 
