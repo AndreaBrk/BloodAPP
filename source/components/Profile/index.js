@@ -62,7 +62,8 @@ class Profile extends React.Component {
           nombre: this.state.first_name,
           apellido: this.state.last_name,
           last_name: '',
-          last_name: ''
+          last_name: '',
+          password: null
         })
       })
     }
