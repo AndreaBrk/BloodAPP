@@ -61,7 +61,7 @@ class Profile extends React.Component {
       .then(() => {
         this.setState({
           last_name: '',
-          last_name: '',
+          first_name: '',
           password: null
         })
       })
@@ -134,11 +134,11 @@ class Profile extends React.Component {
             onChange={(event) => this.ChangeFirstName(event)}
           /><br />
           <TextField
-            floatingLabelText={this.props.user && this.props.user.last_name || 'Apellidp'}
+            floatingLabelText={this.props.user && this.props.user.last_name || 'Apellido'}
             onChange={(event) => this.ChangeLastName(event)}
           /><br />
           <TextField
-            hintText={this.state.email}
+            hintText={this.props.user && this.props.user.email || 'Email'}
             onChange={(event) => this.ChangeEmail(event)}
           /><br />
           <TextField
