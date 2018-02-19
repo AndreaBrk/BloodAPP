@@ -160,7 +160,8 @@ class Dashboard extends React.Component {
       })
       const creds = { name: vname, size: vsize, type: vtype , lat: vlat, lng: vlng, description }
       this.setState({
-        isPos: true
+        isPos: true,
+        posEsNull: true
       })
       this.props.createDonationEvent(auth.headers(), creds)
       .then(() => {
@@ -320,7 +321,7 @@ class Dashboard extends React.Component {
           </div>
 
           <div className={'col-12'}>
-            <p className={!this.state.posEsNull && styles.error}>Determine el lugar del evento en el mapa </p>
+            <p className={!this.state.posEsNull && styles.error || null}>Determine el lugar del evento en el mapa </p>
           </div>
         </div>
 
