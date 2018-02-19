@@ -120,11 +120,11 @@ class Profile extends React.Component {
       <div>
         <div>
           <TextField
-            hintText={this.state.first_name}
+            floatingLabelText={this.state.first_name}
             onChange={(event) => this.ChangeFirstName(event)}
           /><br />
           <TextField
-            hintText={this.state.last_name}
+            floatingLabelText={this.state.last_name}
             onChange={(event) => this.ChangeLastName(event)}
           /><br />
           <TextField

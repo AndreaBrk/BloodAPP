@@ -1,5 +1,4 @@
 import { createStore, applyMiddleware }   from 'redux';
-// import { browserHistory }                 from 'react-router';
 import { syncHistoryWithStore }           from 'react-router-redux';
 import Thunk                              from 'redux-thunk';
 import reducers                           from '../reducers';
@@ -11,9 +10,6 @@ function storeConfig (initialState) {
 }
 
 let store = storeConfig();
-// let history = syncHistoryWithStore(browserHistory, store);
-
-// export { history };
 export default store;
 
 

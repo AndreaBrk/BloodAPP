@@ -33,11 +33,6 @@ export default function donationsReducer (state = initialState, action) {
         ...state,
         donations: arr
       }
-    // case CREATED_DONATION:
-    //   return {
-    //     ...state,
-    //     donations: action.data
-    //   }
     default:
       return state;
   }

@@ -26,7 +26,6 @@ function jsonBody(type: string, attributes: Object): SerializedBody {
 }
 
 export function apiRequest(method: string, type: string, data: { url: string, body: Object, query: Object }): Promise {
-  // const apiToken = authToken.get()
   method = method.toLowerCase()
   method = (method === 'delete') ? 'del' : method
 
@@ -53,54 +52,31 @@ export function apiRequest(method: string, type: string, data: { url: string, bo
       .set('Accept', 'application/json')
       .set('Content-Type', 'application/json')
 
-    // if (apiToken !== null) {
-    //   req.set('Authorization', `Bearer ${apiToken}`)
-    // }
 
     if (data.headers) {
       req.set('access-token', data.headers['access-token'])
       req.set('uid', data.headers.uid)
       req.set('client', data.headers.client)
     }
-
-    // if (data.body !== null && data.body !== undefined) {
-    //   // let body_two = jsonBody(type, data.body)
-    //   let body_two = jsonBody(type, data.body)
-    //   // console.log('[api/shared::apiRequest] %s :: %o', data.url, body)
-    //   // req.set('data', body_two.data)
-    //   req.send(body_two.data.attributes)
-    //   req.send(body_two)
-    // }
     if (data.body !== null && data.body !== undefined) {
       let body_two = jsonBody(type, data.body)
-      // console.log('[api/shared::apiRequest] %s :: %o', data.url, body)
-      //req.set('data', body_two)
-      
       req.send(body_two)
     }
 
     if (data.query !== null && data.query !== undefined) {
       req.query(data.query)
     }
-    // console.log('[api/shared::apiRequest] %s %s', method, data.url, req)
     req.end( (err, response) => {
       // capturar el evento aca de cancan 
       if (response && response.status == 401) {
         auth.clear()
-        // auth.clear
-        // history.push('/login');
         window.location.href='/login';
         return null
       }
       
-      // auth.clear app
-      // import {history} from './store'
-      // history.push('/login');
       if (err) {
-        // console.log('[api/shared::apiRequest] REJECT: ', err, response)
         return reject(response.body)
       }
-      // console.log('[api/shared::apiRequest] FULFILL: ', response)
       return fulfill(response.body)
     })
   })

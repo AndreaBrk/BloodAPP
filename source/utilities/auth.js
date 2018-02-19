@@ -35,15 +35,7 @@ export const auth = {
     }
     return headers;
   },
-  roles: () => {
-    if (!hasLocalStorage()) { return false; }
-    let roles = localStorage.getItem('roles')
-    if (roles) {
-      return JSON.parse(roles)
-    } else {
-      return null;
-    }
-  },
+
   user: () => {
     if (!hasLocalStorage()) { return false; }
     let user = localStorage.getItem('user');
@@ -52,13 +44,6 @@ export const auth = {
     } else {
       return user
     }
-  },
-  all: () => {
-    if (!hasLocalStorage()) { return false; }
-    return {
-      authToken: localStorage.getItem('authToken'),
-      user: JSON.parse(localStorage.getItem('user'))
-    };
   },
   timeSession: () => {
     return localStorage.getItem('time-session')
@@ -70,77 +55,11 @@ export const auth = {
     let segments = token.split('.');
     let dataset = JSON.parse(atob(segments[1]));
   },
-  checkAdmin: () => {
-    if (!hasLocalStorage()) { return false; }
-
-    if (auth.user()) {
-      let isAdmin = false
-      _.map(auth.roles(), (role) => {
-        let user = auth.user()
-        if (role.name == 'admin') {
-          isAdmin = true
-        }
-      })
-      return isAdmin
-    }
-  },
-  checkOperationsManager: () => {
-    if (!hasLocalStorage()) { return false; }
-
-    if (auth.user()) {
-      let isAdmin = false
-      _.map(auth.roles(), (role) => {
-        let user = auth.user()
-        if (role.name == 'sales_manager') {
-          isAdmin = true
-        }
-      })
-      return isAdmin
-    }
-  },
-  checkSalesManager: () => {
-    if (!hasLocalStorage()) { return false; }
-
-    if (auth.user()) {
-      let isAdmin = false
-      _.map(auth.roles(), (role) => {
-        let user = auth.user()
-        if (role.name == 'operation_manager') {
-          isAdmin = true
-        }
-      })
-      return isAdmin
-    }
-  },
-  checkController: () => {
-    if (!hasLocalStorage()) { return false; }
-    
-    if (auth.user()) {
-      let isControler = false
-      _.map(auth.roles(), (role) => {
-        let user = auth.user()
-        if (role.name == 'controller') {
-          isControler = true
-        }
-      })
-      return isControler
-    }
-  },
-  isSessionExpired: () => {
-    let currentDate = new Date();
-    let sessionDate = new Date( auth.timeSession())
-    if (currentDate.getTime() >= sessionDate) {
-      auth.clear()
-      return true
-    }
-    return false
-  }
 };
 
 export function requireAuth (store, nextState, replace, next) {
   if (!store.getState().auth.user) {
     replace('/login');
   }
-
   next();
 }

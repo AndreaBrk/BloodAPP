@@ -70,7 +70,6 @@ class AppBar extends React.Component {
                 </IconButton>
               }
             >
-              <MenuItem primaryText="No hay notificaciones" />
             </IconMenu>
             <IconMenu
               anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
@@ -87,8 +86,6 @@ class AppBar extends React.Component {
               <MenuItem key="profile" onClick={this.redirectToProfile} primaryText="Mi perfil" />,
               <MenuItem key="log-out" onClick={this.logoutUser} primaryText="Log Out" />
             ]
-            // <MenuItem onClick={this.redirectToProfile} primaryText="User Profile" />
-            // <MenuItem onClick={this.logoutUser} primaryText="Log out" />
             :
             <MenuItem onClick={this.logInUser} primaryText="Log In" />
             }

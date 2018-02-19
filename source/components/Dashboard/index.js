@@ -145,7 +145,6 @@ class Dashboard extends React.Component {
       posEsNull: visPos
     })
     if ((tmessage == '' && smessage== '' && nmessage == '' && visPos)) {
-      debugger
       let isPos = true
       this.setState({
         type_message: '',

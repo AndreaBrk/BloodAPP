@@ -65,14 +65,12 @@ class ResetPass extends React.Component {
   }
 
   setMessage = (message) => {
-    debugger
     this.setState({
       messages: [message]
     })
   }
 
   setErrors = (errors) => {
-    debugger
     let error_a = []
     _.map(errors, (value, key) => {
       key = _.camelCase(key)
@@ -137,6 +135,17 @@ class ResetPass extends React.Component {
               labelColor={"#fff"}
               className={styles['button']}
               onClick={(event) => this.handleClick(event)}
+            />
+          </div>
+
+          <div className={styles.actions}>
+            <RaisedButton
+              label="Ir a Login"
+              style={{ height: 45 }}
+              backgroundColor={blue500}
+              labelColor={"#fff"}
+              className={styles['button']}
+              onClick={(event) => this.props.history.push('/login')}
             />
           </div>
         </div>

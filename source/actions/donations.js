@@ -61,15 +61,3 @@ export function fetchMyDonations(headers, params) {
       })
   }
 }
-
-export function editDonationEvent(headers, params) {
-  return dispatch => {
-    return api.editDonationEvent(headers, params)
-  }
-}
-
-export function changeStatus(headers, params) {
-  return dispatch => {
-    return api.changeStatus(headers, params)
-  }
-}

@@ -37,21 +37,3 @@ export function fetchMyDonations(headers: Object, params: Object) {
   });
 }
 
-export function editDonationEvent(headers: Object, params: Objects) {
-  let rUrl = `${generateApiUrl()}/donation_events/${params.id}`;
-  return apiRequest('PUT', 'donations', {
-    url: rUrl,
-    body: params,
-    headers: headers
-  });
-}
-
-export function changeStatus(headers: Object, params: Objects) {
-  let rUrl = `${generateApiUrl()}/donation_events/change_status`;
-  return apiRequest('GET', 'donations', {
-    url: rUrl,
-    body: params,
-    headers: headers
-  });
-}
-
