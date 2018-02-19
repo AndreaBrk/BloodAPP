@@ -61,8 +61,8 @@ class Profile extends React.Component {
         this.setState({
           nombre: this.state.first_name,
           apellido: this.state.last_name,
-          last_name: null,
-          last_name: null
+          last_name: '',
+          last_name: ''
         })
       })
     }
