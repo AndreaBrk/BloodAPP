@@ -57,6 +57,7 @@ class Profile extends React.Component {
       this.setState({
         password_message: null
       });
+      debugger
       this.props.UpdateUser(auth.headers(), {id: auth.user().id, email: this.state.email, first_name: this.state.first_name, last_name: this.state.last_name, blood_type: this.state.blood_type, password: this.state.password})
       .then(() => {
         this.setState({
@@ -92,6 +93,7 @@ class Profile extends React.Component {
   }
 
   ChangeLastName = (event) => {
+    debugger
     this.setState({
       last_name: event.target.value,
     });
