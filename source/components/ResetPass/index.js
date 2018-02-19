@@ -96,7 +96,7 @@ class ResetPass extends React.Component {
   render () {
 
     return (
-      <div className={styles['image-body']}  onEnter={this.checkLogin()}>
+      <div className={styles['image-body']} >
         <div className={styles.box}>
           <Paper className={styles.paper} zDepth={2}>
             <h3>Registrate</h3>
