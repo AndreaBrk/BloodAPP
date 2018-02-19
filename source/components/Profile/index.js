@@ -41,7 +41,9 @@ class Profile extends React.Component {
       email: auth.user().email,
       password: null,
       blood_type_filter: null,
-      password_message: null
+      password_message: null,
+      nombre: auth.user().first_name,
+      apellido: auth.user().last_name
     }
   }
 
@@ -120,11 +122,11 @@ class Profile extends React.Component {
       <div>
         <div>
           <TextField
-            floatingLabelText={this.state.first_name}
+            floatingLabelText={this.state.nombre}
             onChange={(event) => this.ChangeFirstName(event)}
           /><br />
           <TextField
-            floatingLabelText={this.state.last_name}
+            floatingLabelText={this.state.apellido}
             onChange={(event) => this.ChangeLastName(event)}
           /><br />
           <TextField
