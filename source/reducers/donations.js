@@ -22,7 +22,7 @@ export default function donationsReducer (state = initialState, action) {
     case RECEIVED_MY_DONATIONS:
       return {
         ...state,
-        my_donations: action.data
+        donations: action.data
       }
     case DELETED_DONATION:
       const value = action.data.id
