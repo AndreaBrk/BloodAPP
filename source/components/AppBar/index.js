@@ -23,6 +23,7 @@ import { bindActionCreators }    from 'redux';
 import {
   withRouter
 } from 'react-router-dom'
+
 class AppBar extends React.Component {
   constructor (props) {
     super(props);
