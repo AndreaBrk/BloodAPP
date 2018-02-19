@@ -80,16 +80,7 @@ export function resetPassword(params: Object) {
       headers: null
     });
   }
-  };
-
-  return dispatch => {
-    let rUrl = `${generateApiUrl()}/auth/password`;
-    return fetch(rUrl, config)
-      .then((response) => {
-        return response.json()
-      })
-  }
-}
+};
 
 export function updatePassword(params: Object, headers: Object) {
   return dispatch => {
