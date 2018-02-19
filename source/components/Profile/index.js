@@ -37,14 +37,12 @@ class Profile extends React.Component {
     this.state = {
       openDialog: false,
       donation: null,
-      first_name: this.props.user.first_name,
-      last_name: this.props.user.last_name,
-      email: this.props.user.email,
+      first_name: null,
+      last_name: null,
+      email: null,
       password: null,
       blood_type_filter: null,
       password_message: null,
-      nombre: this.props.user.first_name,
-      apellido: this.props.user.last_name
     }
     this.props.getUser(auth.headers(), {id: auth.user.id})
   }
@@ -61,8 +59,6 @@ class Profile extends React.Component {
       this.props.UpdateUser(auth.headers(), {id: auth.user().id, email: this.state.email, first_name: this.state.first_name, last_name: this.state.last_name, blood_type: this.state.blood_type, password: this.state.password})
       .then(() => {
         this.setState({
-          nombre: this.state.first_name,
-          apellido: this.state.last_name,
           last_name: '',
           last_name: '',
           password: null
@@ -133,11 +129,11 @@ class Profile extends React.Component {
       <div>
         <div>
           <TextField
-            floatingLabelText={this.state.nombre}
+            floatingLabelText={this.props.user.first_name}
             onChange={(event) => this.ChangeFirstName(event)}
           /><br />
           <TextField
-            floatingLabelText={this.state.apellido}
+            floatingLabelText={this.props.user.last_name}
             onChange={(event) => this.ChangeLastName(event)}
           /><br />
           <TextField
