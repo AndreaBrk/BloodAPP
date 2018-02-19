@@ -5,8 +5,6 @@ import styles                    from './styles.css';
 import { 
   fetchMyDonations,
   createDonationEvent,
-  changeStatus,
-  deleteDonationEvent
 }                                 from 'actions/donations';
 import { 
   UpdateUser
@@ -66,10 +64,6 @@ class Profile extends React.Component {
 
 
 
-  handleDelete = (donation, event) => {
-    this.props.deleteDonationEvent(auth.headers(), {id: donation.id})
-  }
-
   handleOpenEditDIalog = (donation, event) => {
     this.setState({
       openDialog: true,
@@ -82,10 +76,6 @@ class Profile extends React.Component {
       openDialog: false,
       donation: null
     })
-  }
-
-  handleChangeStatus = (donation, event) => {
-    this.props.changeStatus(auth.headers(), {id: donation.id})
   }
 
 
@@ -179,8 +169,6 @@ function mapStateToProps (state) {
 };
 function mapDispatchToProps (dispatch) {
   return {
-    deleteDonationEvent: bindActionCreators(deleteDonationEvent, dispatch),
-    changeStatus: bindActionCreators(changeStatus, dispatch), 
     fetchData: bindActionCreators(fetchMyDonations, dispatch),
     UpdateUser: bindActionCreators(UpdateUser, dispatch)
   };
