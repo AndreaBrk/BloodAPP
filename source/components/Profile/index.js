@@ -131,11 +131,11 @@ class Profile extends React.Component {
       <div>
         <div>
           <TextField
-            floatingLabelText={this.props.user.first_name}
+            floatingLabelText={this.props.user && this.props.user.first_name || 'Nombre'}
             onChange={(event) => this.ChangeFirstName(event)}
           /><br />
           <TextField
-            floatingLabelText={this.props.user.last_name}
+            floatingLabelText={this.props.user && this.props.user.last_name || 'Apellidp'}
             onChange={(event) => this.ChangeLastName(event)}
           /><br />
           <TextField
