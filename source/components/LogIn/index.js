@@ -156,6 +156,16 @@ class LogIn extends React.Component {
               onClick={(event) => this.props.history.push('/sign_up')}
             />
           </div>
+          <div className={styles.actions}>
+            <RaisedButton
+              label="Reset Password"
+              style={{ height: 45 }}
+              backgroundColor={blue500}
+              labelColor={"#fff"}
+              className={styles['button']}
+              onClick={(event) => this.props.history.push('/reset_password')}
+            />
+          </div>
         </div>
       </div>
     );
