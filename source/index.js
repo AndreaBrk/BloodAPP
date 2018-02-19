@@ -12,6 +12,7 @@ import App                      from './containers/App';
 import Profile                  from './components/Profile';
 import LogIn                    from './components/LogIn';
 import SignUp                   from './components/Signup';
+import ResetPass                   from './components/ResetPass';
 import Dashboard                    from './components/Dashboard';
 
 import {
@@ -34,6 +35,7 @@ ReactDOM.render(
         <Switch>
             <Route exact path="/login" component={LogIn} />
             <Route exact path="/sign_up" component={SignUp} />
+            <Route exact path="/reset_password" component={ResetPass} />
             <App>
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
