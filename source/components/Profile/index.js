@@ -46,7 +46,7 @@ class Profile extends React.Component {
     }
   }
   componentWillMount = () => {
-    this.props.getUser(auth.headers(), {id: auth.user.id})
+    this.props.getUser(auth.headers(), {id: auth.user().id})
   }
 
   handleClick = (url) => {
