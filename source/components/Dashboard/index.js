@@ -145,12 +145,11 @@ class Dashboard extends React.Component {
       posEsNull: visPos
     })
     if ((tmessage == '' && smessage== '' && nmessage == '' && visPos)) {
-      let isPos = true
       this.setState({
         type_message: '',
         size_message: '',
         name_message: '',
-        isPos,
+        isPos: true,
         size: 0,
         name: '',
         type: '',
