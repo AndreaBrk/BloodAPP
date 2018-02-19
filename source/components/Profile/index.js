@@ -45,10 +45,6 @@ class Profile extends React.Component {
     }
   }
 
-  componentWillMount() {
-    this.props.fetchData(auth.headers())
-  }
-
   handleClick = (url) => {
     if (this.state.password.length < 8) {
       this.setState({
@@ -116,14 +112,6 @@ class Profile extends React.Component {
     });
   }
 
-  handleFilter = () => {
-    if (this.state.blood_type_filter != null && this.state.blood_type_filter != '') {
-      this.props.fetchData(auth.headers(), {blood_type: this.state.blood_type_filter})
-    } else {
-      this.props.fetchData(auth.headers())
-    }
-  }
-
 
   render () {
     let { open, title, onLeftIconButtonTouchTap } = this.props;
@@ -169,7 +157,6 @@ function mapStateToProps (state) {
 };
 function mapDispatchToProps (dispatch) {
   return {
-    fetchData: bindActionCreators(fetchMyDonations, dispatch),
     UpdateUser: bindActionCreators(UpdateUser, dispatch)
   };
 }

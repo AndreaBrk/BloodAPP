@@ -1,8 +1,8 @@
 
 import  * as api                        from 'api/users';
 
-export function changePass(headers, params) {
+export function UpdateUser(headers, params) {
   return dispatch => {
-    return api.changePass(headers, params)
+    return api.UpdateUser(headers, params)
   }
 }
