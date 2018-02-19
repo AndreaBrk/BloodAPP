@@ -37,14 +37,14 @@ class Profile extends React.Component {
     this.state = {
       openDialog: false,
       donation: null,
-      first_name: user.first_name,
-      last_name: user.last_name,
-      email: user.email,
+      first_name: this.props.user.first_name,
+      last_name: this.props.user.last_name,
+      email: this.props.user.email,
       password: null,
       blood_type_filter: null,
       password_message: null,
-      nombre: user.first_name,
-      apellido: user.last_name
+      nombre: this.props.user.first_name,
+      apellido: this.props.user.last_name
     }
     this.props.getUser(auth.headers(), {id: auth.user.id})
   }
