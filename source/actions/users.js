@@ -5,6 +5,7 @@ import {
 import  * as api                        from 'api/users';
 
 export function UpdateUser(headers, params) {
+  debugger
   return dispatch => {
     return api.UpdateUser(headers, params)
   }

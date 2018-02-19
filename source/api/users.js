@@ -1,6 +1,7 @@
 import { generateApiUrl, apiRequest } from './system'
 
 export function UpdateUser(headers, params) {
+  debugger
   let rUrl = `${generateApiUrl()}/users/${params.id}`;
 
   return apiRequest('PUT', 'users', {
