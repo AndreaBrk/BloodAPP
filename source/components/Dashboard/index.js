@@ -224,7 +224,7 @@ class Dashboard extends React.Component {
     this.setState({
       onlyMine: checked
     })
-    if (this.state.onlyMine) {
+    if (!this.state.onlyMine) {
       this.props.fetchMyDonations(auth.headers())
     } else {
       let posLat = this.state.posLat
