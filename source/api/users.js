@@ -9,7 +9,7 @@ export function UpdateUser(headers, params) {
     headers
   });
 }
-export function getUser(params: Object, headers: Object) {
+export function getUser(headers: Object, params: Object) {
   let rUrl = `${generateApiUrl()}/users/${params.id}`;
 
   return apiRequest('GET', 'users', {
