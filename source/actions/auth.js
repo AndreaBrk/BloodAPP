@@ -54,6 +54,7 @@ export function loginUser (creds) {
           } else if (headers.has('Client')) {
             params.client = headers.get('Client');
           }
+          debugger
           apiRequest('GET', 'Role', {
             url: `${generateApiUrl()}/v1/users/get_role/${params.id}`,
             body: user.data
