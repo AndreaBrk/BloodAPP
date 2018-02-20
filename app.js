@@ -5,11 +5,13 @@
 
 var path = require('path');
 var express = require('express');
-var webpack = require('webpack');
+var webpack = require('webpack'); // webpack: sistema de empaquetado
 
+// determina que configuración usar según el entorno
 var config = process.env.NODE_ENV === 'production' ? require('./webpack.config') : require('./webpack.config.dev');
 
 var app = express();
+// se compila según la config
 var compiler = webpack(config);
 
 if (process.env.NODE_ENV !== 'production') {
@@ -19,6 +21,7 @@ if (process.env.NODE_ENV !== 'production') {
   }));
 }
 
+// Carga dependencias
 app.get('/reset.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'reset.css'));
 });
@@ -52,6 +55,7 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// se determina a qué puerto escuchar según el entorno
 if (process.env.NODE_ENV === 'production') {
   // Asi se configura para Heroku
   app.set('port', (process.env.PORT || 5000));

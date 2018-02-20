@@ -1,20 +1,23 @@
 var path = require('path');
 var webpack = require('webpack');
 
+// Determina la configuración que luego va a ser usada al compilar
 module.exports = {
   devtool: 'source-map',
   resolve: {
     root: __dirname + '/source'
   },
   entry: [
-    './source/index'
+    './source/index' // archivo a compilar
   ],
+  // dónde va a estar ubicado el archivo al hacer build
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'index.js',
     publicPath: '/static/'
   },
   resolve: {
+    // se definen los alias de los archivos, permitiendo luego hacer referencias
     root: __dirname,
     modulesDirectories: [ 'node_modules', 'source' ],
     extensions: [ '', '.js', '.jsx', '.css', '.jpg'],
@@ -28,6 +31,7 @@ module.exports = {
       images    : path.join(__dirname, 'source', 'images'),
     }
   },
+  // plugíns necesarios para la app
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
@@ -37,6 +41,7 @@ module.exports = {
     })
   ],
   module: {
+    // módulos para poder leer imágenes, css y fonts
     rules: [
       {
         test: /\.(jpe?g|png|gif)$/i,   //to support eg. background-image property 
