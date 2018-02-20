@@ -43,6 +43,7 @@ class Profile extends React.Component {
       password: null,
       blood_type_filter: null,
       password_message: null,
+      errors: null
     }
     debugger
     this.props.getUser(auth.headers(), {id: auth.user().id})
@@ -61,6 +62,9 @@ class Profile extends React.Component {
       const first_name = this.state.first_name || this.props.user.first_name
       const last_name = this.state.last_name || this.props.user.last_name
       this.props.UpdateUser(auth.headers(), {id: auth.user().id, email: email, first_name: first_name, last_name: last_name, blood_type: this.state.blood_type, password: this.state.password})
+      .catch((error) => {
+        setError(error.errors)
+      })
       this.setState({
         last_name: null,
         first_name: null,
@@ -72,7 +76,16 @@ class Profile extends React.Component {
   }
 
 
-
+  setErrors = (errors) => {
+    let error_a = []
+    _.map(errors, (value, key) => {
+      key = _.camelCase(key)
+      error_a.push(key.concat(" ").concat(value[0]))
+    });
+    this.setState({
+      errors: error_a
+    })
+  }
   handleOpenEditDIalog = (donation, event) => {
     this.setState({
       openDialog: true,
@@ -133,6 +146,15 @@ class Profile extends React.Component {
     return (
       <div>
         <div>
+          {this.state.errors &&
+            <div className={styles.errors}>
+            {this.state.errors && this.state.errors.map((err, idx) => (
+              <div className={styles['error']}>
+                {err}
+              </div>
+            ))}
+            </div>
+          }
           <TextField
             floatingLabelText={this.props.user && this.props.user.first_name || 'Nombre'}
             hintText={this.state.first_name || ''}

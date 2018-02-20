@@ -15,3 +15,15 @@
 .button {
   margin: 30px 0
 }
+
+.errors {
+  margin: 15px 0;
+}
+
+.error {
+  color: #ff4646 !important;
+}
+
+.error + .error {
+  margin-top: 15px;
+}
