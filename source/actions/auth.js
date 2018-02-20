@@ -54,14 +54,13 @@ export function loginUser (creds) {
           } else if (headers.has('Client')) {
             params.client = headers.get('Client');
           }
-          debugger
           apiRequest('GET', 'Role', {
-            url: `${generateApiUrl()}/v1/users/get_role/${params.id}`,
-            body: user.data
+            url: `${generateApiUrl()}/v1/users/get_role/${user.id}`,
+            body: null
           }).then((json) => {
             let data = {
               user: user.data,
-              headers: null,
+              headers: params,
               roles: json
             }
             dispatch({ type: USER_ACCESS_REQUESTED, data: data});
