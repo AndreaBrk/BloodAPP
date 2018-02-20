@@ -64,8 +64,10 @@ class Profile extends React.Component {
       this.setState({
         last_name: '',
         first_name: '',
-        password: null
+        password: null,
+        email: ''
       })
+      this.props.getUser(auth.headers(), {id: auth.user().id})
     }
   }
 
