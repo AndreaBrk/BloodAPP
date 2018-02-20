@@ -19,7 +19,5 @@ export function getUser(headers, params) {
           data: json,
         });
       })
-      .catch(err => {
-      })
   }
 }
