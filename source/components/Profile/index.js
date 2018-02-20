@@ -144,7 +144,7 @@ class Profile extends React.Component {
             onChange={(event) => this.ChangeLastName(event)}
           /><br />
           <TextField
-            hintText={this.props.user && this.props.user.email || 'Email'}
+            floatingLabelText={this.props.user && this.props.user.email || 'Email'}
             hintText={this.state.email}
             onChange={(event) => this.ChangeEmail(event)}
           /><br />
