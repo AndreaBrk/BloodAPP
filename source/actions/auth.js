@@ -55,7 +55,7 @@ export function loginUser (creds) {
             params.client = headers.get('Client');
           }
           apiRequest('GET', 'Role', {
-            url: `${generateApiUrl()}/v1/users/get_role/`,
+            url: `${generateApiUrl()}/v1/users/get_role`,
             body: {id: user.data.id}
           }).then((json) => {
             let data = {
