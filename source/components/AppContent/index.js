@@ -1,9 +1,11 @@
-import React        from 'react';
-import cx           from 'classnames';
-import styles       from './styles.css';
+import React        from 'react'
+import cx           from 'classnames'
+import styles       from './styles.css'
 
-
-
+/**
+ * Componente simple en el que se renderizan las rutas hijas.
+ * Su utilidad es meramente para facilitar los estilos y funcionar como layout.
+ */
 export default class AppContent extends React.Component {
   state = {
     maxWidth: 980,
@@ -27,13 +29,13 @@ export default class AppContent extends React.Component {
   }
 
   render () {
-    const { children,  } = this.props;
-    const { maxWidth, marginTop } = this.state;
+    const { children,  } = this.props
+    const { maxWidth, marginTop } = this.state
 
     return (
       <div className={cx(styles.content)} style={{ maxWidth, marginTop }}>
         {children}
       </div>
-    );
+    )
   }
 }

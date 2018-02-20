@@ -1,15 +1,15 @@
 
 import {
   RECEIVED_USER
-}                                       from '../constants';
-import  * as api                        from 'api/users';
+}                                       from 'constants'
+import  * as api                        from 'api/users'
 
-export function UpdateUser(headers, params) {
-  debugger
+export function updateUser(headers, params) {
   return dispatch => {
-    return api.UpdateUser(headers, params)
+    return api.updateUser(headers, params)
   }
 }
+
 export function getUser(headers, params) {
   return dispatch => {
     return api.getUser(headers, params)
@@ -17,7 +17,7 @@ export function getUser(headers, params) {
         dispatch({
           type: RECEIVED_USER,
           data: json,
-        });
+        })
       })
   }
 }

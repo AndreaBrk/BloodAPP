@@ -1,47 +1,46 @@
-import React                     from 'react';
-import { connect }               from 'react-redux';
-import { bindActionCreators }    from 'redux';
+import React                     from 'react'
+import { connect }               from 'react-redux'
+import { bindActionCreators }    from 'redux'
 import {
   loginUser,
-}                                from 'actions/auth';
-import styles                    from './styles.css';
-import _                         from 'lodash';
-import Paper                     from 'material-ui/Paper';
-import TextField                 from 'material-ui/TextField';
-import RaisedButton              from 'material-ui/RaisedButton';
-import { List, ListItem }        from 'material-ui/List';
-import { auth }                  from 'utilities/auth';
-import { generateApiUrl }        from 'api/system'
-import FlatButton                from 'material-ui/FlatButton';
-import { blue500 } from 'material-ui/styles/colors';
-// import bg from './pattern.svg';
-import { debuglog } from 'util';
-
-
+}                                from 'actions/auth'
+import styles                    from './styles.css'
+import _                         from 'lodash'
+import Paper                     from 'material-ui/Paper'
+import TextField                 from 'material-ui/TextField'
+import RaisedButton              from 'material-ui/RaisedButton'
+import { List, ListItem }        from 'material-ui/List'
+import auth                      from 'auth'
+import FlatButton                from 'material-ui/FlatButton'
+import { blue500 } from 'material-ui/styles/colors'
+// import bg from './pattern.svg'
+import { debuglog } from 'util'
 
 // https://github.com/mjrussell/redux-auth-wrapper/blob/master/examples/localStorage/components/Login.js
 // https://github.com/auth0-blog/redux-auth/blob/master/components/Login.js
 // https://www.sitepoint.com/introduction-to-using-jwt-in-rails/
 // http://stackoverflow.com/questions/35381276/redux-async-requests-with-fetch-api
 
+/**
+ * Componente encargado de renderizar el login de usuario.
+ */
 class LogIn extends React.Component {
   constructor (props) {
     super(props)
-    // this.props.dispatch({
-    //   type: 'CHANGED_TITLE',
-    //   data: 'Login'
-    // });
   }
+
   componentWillMount () {
-    let { auth } = this.props;
+    const { auth } = this.props
+
     if (auth.user) {
-      this.props.history.push('/dashboard');
+      this.props.history.push('/dashboard')
     }
+
     this.state = {
       email: null,
       password: null,
       errors: null
-    };
+    }
   }
 
   onLoginClick (creds) {
@@ -54,8 +53,8 @@ class LogIn extends React.Component {
   }
 
   handleClick (event) {
-    const email = this.state.email;
-    const password = this.state.password;
+    const email = this.state.email
+    const password = this.state.password
     let err = null
     if (!email || !password) {
       err = ['Email y Contraseña son requeridos']
@@ -66,7 +65,7 @@ class LogIn extends React.Component {
       this.setState({
         errors: err
       })
-      const creds = { email: email, password: password };
+      const creds = { email: email, password: password }
       this.onLoginClick(creds)
     }
   }
@@ -74,26 +73,26 @@ class LogIn extends React.Component {
   handleChangeEmail = (event) => {
     this.setState({
       email: event.target.value,
-    });
-  };
+    })
+  }
+
   handleChangePassword = (event) => {
     this.setState({
       password: event.target.value,
-    });
-  };
+    })
+  }
 
   handleClickRecover = (url) => {
-    this.props.history.push('/recover_password');
+    this.props.history.push('/recover_password')
   }
 
   checkLogin() {
     if (auth.user()) {
-      this.props.history.push('/dashboard');
+      this.props.history.push('/dashboard')
     }
   }
 
   render () {
-
     return (
       <div className={styles['image-body']}  onEnter={this.checkLogin()}>
         <div className={styles.box}>
@@ -109,7 +108,6 @@ class LogIn extends React.Component {
             ))}
             </div>
             }
-
 
             <TextField
               type='email'
@@ -128,11 +126,6 @@ class LogIn extends React.Component {
               value={this.state.password}
               onChange={this.handleChangePassword}
             />
-            {/*
-            <div>
-                <FlatButton className={styles['text-reset-pass']}  label="Recover Password" onClick={this.handleClickRecover}/>
-            </div>
-            */}
           </Paper>
 
           <div className={styles.actions}>
@@ -146,29 +139,13 @@ class LogIn extends React.Component {
             />
           </div>
 
-          <div className={styles.actions}>
-            <RaisedButton
-              label="Registrarse"
-              style={{ height: 45 }}
-              backgroundColor={blue500}
-              labelColor={"#fff"}
-              className={styles['button']}
-              onClick={(event) => this.props.history.push('/sign_up')}
-            />
-          </div>
-          <div className={styles.actions}>
-            <RaisedButton
-              label="Reset Password"
-              style={{ height: 45 }}
-              backgroundColor={blue500}
-              labelColor={"#fff"}
-              className={styles['button']}
-              onClick={(event) => this.props.history.push('/reset_password')}
-            />
-          </div>
+          <ul className={styles['extra-links']}>
+            <li>¿No tienes una cuenta? <a onClick={(event) => this.props.history.push('/sign_up')}>Regístrate</a></li>
+            <li>¿Olvidaste tu Contraseña? <a onClick={(event) => this.props.history.push('/reset_password')}>Recupérala</a></li>
+          </ul>
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -176,18 +153,18 @@ class LogIn extends React.Component {
 function mapStateToProps (state) {
   return {
     auth: state.auth,
-  };
+  }
 }
 
 function mapDispatchToProps (dispatch) {
   return {
     loginUser: bindActionCreators(loginUser, dispatch),
 
-  };
+  }
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(LogIn);
+)(LogIn)
 

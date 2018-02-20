@@ -1,57 +1,64 @@
-import React                     from 'react';
+import React                     from 'react'
 import {
   Toolbar,
   ToolbarGroup,
-  ToolbarTitle }                 from 'material-ui/Toolbar';
-import styles                    from './styles.css';
+  ToolbarTitle }                 from 'material-ui/Toolbar'
+import styles                    from './styles.css'
 import {
   FlatButton,
   MenuItem,
   IconMenu,
   IconButton
-}                                from 'material-ui';
-import MoreVertIcon              from 'material-ui/svg-icons/navigation/more-vert';
-import SvgIcon                   from 'material-ui/SvgIcon';
-import MenuIcon                  from 'material-ui/svg-icons/navigation/menu';
-import Notifications             from 'material-ui/svg-icons/social/notifications';
-import NavigationExpandMoreIcon  from 'material-ui/svg-icons/navigation/expand-more';
-import Person                    from 'material-ui/svg-icons/social/person';
-import { auth }                  from 'utilities/auth';
-import { connect }               from 'react-redux';
-import { logoutUser }            from 'actions/auth';
-import { bindActionCreators }    from 'redux';
+}                                from 'material-ui'
+import MoreVertIcon              from 'material-ui/svg-icons/navigation/more-vert'
+import SvgIcon                   from 'material-ui/SvgIcon'
+import MenuIcon                  from 'material-ui/svg-icons/navigation/menu'
+import Notifications             from 'material-ui/svg-icons/social/notifications'
+import NavigationExpandMoreIcon  from 'material-ui/svg-icons/navigation/expand-more'
+import Person                    from 'material-ui/svg-icons/social/person'
+import auth                      from 'auth'
+import { connect }               from 'react-redux'
+import { logoutUser }            from 'actions/auth'
+import { bindActionCreators }    from 'redux'
 import {
   withRouter
 } from 'react-router-dom'
 
+/**
+ * Componente encargado de renderizar la barra de navegacion.
+ */
 class AppBar extends React.Component {
   constructor (props) {
-    super(props);
+    super(props)
     this.state = {
       titleAppBar: this.props.title
     }
   }
   handleClickTitle = () => {
-    this.props.history.push('/dashboard');
+    this.props.history.push('/dashboard')
   }
 
   logoutUser = () => {
-    this.props.logoutUser();
-    this.props.history.push('/login');
+    this.props.logoutUser()
+    this.props.history.push('/login')
   }
 
 
   logInUser = () => {
-    this.props.history.push('/login');
+    this.props.history.push('/login')
   }
 
   redirectToProfile = () => {
-    this.props.history.push('/profile');
+    this.props.history.push('/profile')
+  }
+
+  componentDidMount() {
+    console.log(this.props)
   }
 
 
   render () {
-    let { title, onLeftIconButtonTouchTap } = this.props;
+    const { title, onLeftIconButtonTouchTap } = this.props
 
     return (
       <div className={styles['nav-bar']}>
@@ -84,7 +91,7 @@ class AppBar extends React.Component {
           </ToolbarGroup>
         </Toolbar>
       </div>
-    );
+    )
   }
 }
 
@@ -93,7 +100,7 @@ class AppBar extends React.Component {
 function mapDispatchToProps (dispatch) {
   return {
     logoutUser: bindActionCreators(logoutUser, dispatch)
-  };
+  }
 }
 
 export default withRouter(

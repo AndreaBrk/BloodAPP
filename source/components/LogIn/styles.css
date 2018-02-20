@@ -49,9 +49,20 @@
   font-size: 13px !important;
 }
 
+.extra-links {
+  color: #fff;
+  padding: 0;
+  list-style: none;
+}
+
+.extra-links a {
+  color: #acdaff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 
 .image-body {
-  /* background-image:linear-gradient(0deg,rgba(80,80,80,0.6),rgba(80,80,80,0.6)),url("images/zoni_min.jpg") !important; */
   background-image: url(./pattern.svg);
   background-repeat: no-repeat;
   background-position: center;

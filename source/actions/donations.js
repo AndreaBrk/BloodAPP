@@ -4,8 +4,8 @@ import {
   CREATED_DONATION,
   RECEIVED_MY_DONATIONS,
   DELETED_DONATION
-}                                       from '../constants';
-import  * as api                        from 'api/donations';
+}                                       from 'constants'
+import  * as api                        from 'api/donations'
 
 export function fetchDonations(headers, params) {
   return dispatch => {
@@ -14,7 +14,7 @@ export function fetchDonations(headers, params) {
         dispatch({
           type: RECEIVED_DONATIONS,
           data: json,
-        });
+        })
       })
       .catch(err => {
       })
@@ -27,7 +27,7 @@ export function createDonationEvent(headers, params) {
         dispatch({
           type: CREATED_DONATION,
           data: json,
-        });
+        })
       })
       .catch(err => {
       })
@@ -41,7 +41,7 @@ export function deleteDonationEvent(headers, params) {
         dispatch({
           type: DELETED_DONATION,
           data: params,
-        });
+        })
       })
       .catch(err => {
       })
@@ -55,7 +55,7 @@ export function fetchMyDonations(headers, params) {
         dispatch({
           type: RECEIVED_MY_DONATIONS,
           data: json,
-        });
+        })
       })
       .catch(err => {
       })

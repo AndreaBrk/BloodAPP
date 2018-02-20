@@ -1,26 +1,26 @@
-import React                    from 'react';
-import ReactDOM                 from 'react-dom';
-import store, { history }       from './store';
-import { auth }                 from 'utilities/auth';
-import { Provider }             from 'react-redux';
+import React                    from 'react'
+import ReactDOM                 from 'react-dom'
+import store, { history }       from './store'
+import auth                     from 'auth'
+import { Provider }             from 'react-redux'
 import {
   IndexRoute,
   browserHistory
-}                               from 'react-router';
-import MuiThemeProvider         from 'material-ui/styles/MuiThemeProvider';
-import App                      from './containers/App';
-import Profile                  from './components/Profile';
-import LogIn                    from './components/LogIn';
-import SignUp                   from './components/Signup';
-import ResetPass                   from './components/ResetPass';
-import Dashboard                    from './components/Dashboard';
+}                               from 'react-router'
+import MuiThemeProvider         from 'material-ui/styles/MuiThemeProvider'
+import App                      from './components/App'
+import Profile                  from './components/Profile'
+import LogIn                    from './components/LogIn'
+import SignUp                   from './components/Signup'
+import ResetPass                from './components/ResetPass'
+import Dashboard                from './components/Dashboard'
 
 import {
   Redirect,
   BrowserRouter as Router,
   Route,
   Switch
- }                                      from 'react-router-dom';
+ }                                      from 'react-router-dom'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
@@ -33,17 +33,16 @@ ReactDOM.render(
     <MuiThemeProvider>
       <Router basename="/" component={App}>
         <Switch>
-            <Route exact path="/login" component={LogIn} />
-            <Route exact path="/sign_up" component={SignUp} />
-            <Route exact path="/reset_password" component={ResetPass} />
+            <Route path="/login" component={LogIn} />
+            <Route path="/sign_up" component={SignUp} />
+            <Route path="/reset_password" component={ResetPass} />
             <App>
-              <PrivateRoute exact path="/profile" component={Profile} />
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <Route component={() => <Redirect to="/dashboard" push />} />
+              <PrivateRoute path="/profile" component={Profile} />
+              <PrivateRoute path="/dashboard" component={Dashboard} />
             </App>
         </Switch>
       </Router>
     </MuiThemeProvider>
   </Provider>,
   document.getElementById('root')
-);
+)

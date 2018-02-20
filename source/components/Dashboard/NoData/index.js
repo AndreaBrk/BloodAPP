@@ -1,7 +1,7 @@
-import React        from 'react';
-import cx           from 'classnames';
+import React        from 'react'
+import cx           from 'classnames'
 import ReportIcon   from 'material-ui/svg-icons/content/report'
-import styles       from './styles.css';
+import styles       from './styles.css'
 
 
 

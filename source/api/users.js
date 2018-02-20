@@ -1,23 +1,24 @@
-import { generateApiUrl, apiRequest } from './system'
+import { BASE_URL } from 'constants'
+import { apiRequest } from './system'
 
-export function UpdateUser(headers, params) {
-  debugger
-  let rUrl = `${generateApiUrl()}/users/${params.id}`;
+export function updateUser(headers, params) {
+  const rUrl = `${BASE_URL}/v1/users/${params.id}`
 
   return apiRequest('PUT', 'users', {
     url: rUrl,
     body: params,
     headers
-  });
+  })
 }
-export function getUser(headers: Object, params: Object) {
-  let rUrl = `${generateApiUrl()}/users/${params.id}`;
+
+export function getUser(headers, params) {
+  const rUrl = `${BASE_URL}/v1/users/${params.id}`
 
   return apiRequest('GET', 'users', {
     url: rUrl,
     body: null,
     headers
-  });
+  })
 }
 
 

@@ -1,22 +1,22 @@
-import React                     from 'react';
-import { connect }               from 'react-redux';
-import { bindActionCreators }    from 'redux';
-import styles                    from './styles.css';
+import React                     from 'react'
+import { connect }               from 'react-redux'
+import { bindActionCreators }    from 'redux'
+import styles                    from './styles.css'
 import {
   fetchDonations,
   createDonationEvent,
   deleteDonationEvent,
   fetchMyDonations
-}                                 from 'actions/donations';
-import { auth }                   from 'utilities/auth';
-import GoogleMapReact             from 'google-map-react';
-import {Map, InfoBox, InfoWindow, Marker, GoogleApiWrapper, Polygon} from 'google-maps-react';
-import TextField                  from 'material-ui/TextField';
-import RaisedButton               from 'material-ui/RaisedButton';
-import FlatButton                 from 'material-ui/FlatButton';
-import SelectField                from 'material-ui/SelectField';
-import MenuItem                   from 'material-ui/MenuItem';
-import Toggle                     from 'material-ui/Toggle';
+}                                 from 'actions/donations'
+import auth                       from 'auth'
+import GoogleMapReact             from 'google-map-react'
+import {Map, InfoBox, InfoWindow, Marker, GoogleApiWrapper, Polygon} from 'google-maps-react'
+import TextField                  from 'material-ui/TextField'
+import RaisedButton               from 'material-ui/RaisedButton'
+import FlatButton                 from 'material-ui/FlatButton'
+import SelectField                from 'material-ui/SelectField'
+import MenuItem                   from 'material-ui/MenuItem'
+import Toggle                     from 'material-ui/Toggle'
 import {
   Table,
   TableBody,
@@ -24,25 +24,27 @@ import {
   TableHeaderColumn,
   TableRow,
   TableRowColumn,
-} from 'material-ui/Table';
-import AddLocationIcon              from 'material-ui/svg-icons/maps/add-location';
-import MapIcon                      from 'material-ui/svg-icons/maps/map';
-import ListIcon                     from 'material-ui/svg-icons/action/list';
-import {red500, yellow500, blue500} from 'material-ui/styles/colors';
-import NoData                       from './NoData';
+} from 'material-ui/Table'
+import AddLocationIcon              from 'material-ui/svg-icons/maps/add-location'
+import MapIcon                      from 'material-ui/svg-icons/maps/map'
+import ListIcon                     from 'material-ui/svg-icons/action/list'
+import {red500, yellow500, blue500} from 'material-ui/styles/colors'
+import NoData                       from './NoData'
 
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const AnyReactComponent = ({ text }) => <div>{text}</div>
 
-
-
+/**
+ * Componente encargado de renderizar el formulario de alta de nuevas solicitudes,
+ * la lista de solicitudes actuales y el mapa en el que se ubican.
+ */
 class Dashboard extends React.Component {
   static defaultProps = {
     donations: []
   }
 
   constructor (props) {
-    super(props);
+    super(props)
     this.state = {
       size: null,
       name: '',
@@ -68,7 +70,7 @@ class Dashboard extends React.Component {
   }
 
   componentWillMount = () => {
-    navigator.geolocation.getCurrentPosition(this.showPosition,this.errorCallback);
+    navigator.geolocation.getCurrentPosition(this.showPosition,this.errorCallback)
   }
 
   errorCallback = (err) => {
@@ -76,9 +78,10 @@ class Dashboard extends React.Component {
       message_warning: "Es necesario que la geolocalización esté activada"
     })
   }
+
   showPosition = (location) => {
-    let posLat = location.coords.latitude
-    let posLng = location.coords.longitude
+    const posLat = location.coords.latitude
+    const posLng = location.coords.longitude
     this.setState({
       posLat,
       posLng
@@ -94,20 +97,20 @@ class Dashboard extends React.Component {
   handleChangeName = (event) => {
     this.setState({
       name: event.target.value,
-    });
-  };
+    })
+  }
 
   handleChangeBloodType = (event, key, payload) => {
     this.setState({
       type: payload,
-    });
-  };
+    })
+  }
 
   handleChangeSize = (event, newValue) => {
     this.setState({
       size: newValue,
     })
-  };
+  }
 
   handleClick = (event) => {
     const vname = this.state.name
@@ -117,26 +120,28 @@ class Dashboard extends React.Component {
     const vlng = this.state.lng
     const vposLat = this.state.posLat
     const vposLng = this.state.Poslng
-    let description = this.state.description
+    const description = this.state.description
+
     let nmessage = ''
     let smessage = ''
     let tmessage = ''
     let visPos = true
-    if (vname == "" || vname == null) {
+    if (vname === "" || vname === null) {
       nmessage = "El nombre no puede ser vacío"
     }
 
-    if  (vsize == 0 || vsize == null) {
+    if  (vsize === 0 || vsize === null) {
       smessage = "La cantidad debe ser mayor a 0"
     }
 
-    if (vtype == '' || vtype == null) {
+    if (vtype === '' || vtype === null) {
       tmessage = "El tipo no puede ser vacío"
     }
 
-    if (vlat == '' || vlat == null ||vlng == '' || vlng == null) {
+    if (vlat === '' || vlat === null ||vlng === '' || vlng === null) {
       visPos = false
     }
+
     this.setState({
       type_message: tmessage,
       size_message: smessage,
@@ -144,7 +149,8 @@ class Dashboard extends React.Component {
       isPos: visPos,
       posEsNull: visPos
     })
-    if ((tmessage == '' && smessage== '' && nmessage == '' && visPos)) {
+
+    if ((tmessage === '' && smessage== '' && nmessage === '' && visPos)) {
       this.setState({
         type_message: '',
         size_message: '',
@@ -158,11 +164,14 @@ class Dashboard extends React.Component {
         lng: null,
         posEsNull: true
       })
+
       const creds = { name: vname, size: vsize, type: vtype , lat: vlat, lng: vlng, description }
+
       this.setState({
         isPos: true,
         posEsNull: true
       })
+
       this.props.createDonationEvent(auth.headers(), creds)
       .then(() => {
         this.props.fetchData(auth.headers(), {vposLat, vposLng})
@@ -171,8 +180,8 @@ class Dashboard extends React.Component {
   }
 
   onMapClicked = (mapProps, map, clickEvent) => {
-    let lat = clickEvent.latLng.lat()
-    let lng = clickEvent.latLng.lng()
+    const lat = clickEvent.latLng.lat()
+    const lng = clickEvent.latLng.lng()
     this.setState({
       lat,
       lng
@@ -182,32 +191,32 @@ class Dashboard extends React.Component {
   handleBloodTypeFilter = (event, key, payload) => {
     this.setState({
       blood_type_filter: payload,
-    });
+    })
   }
 
   handleChangeDescription = (event) => {
     this.setState({
       description: event.target.value,
-    });
+    })
   }
 
 
   handleFilter = () => {
-    let posLat = this.state.posLat
-    let posLng = this.state.posLng
+    const posLat = this.state.posLat
+    const posLng = this.state.posLng
     this.props.fetchData(auth.headers(), {posLat, posLng, blood_type: this.state.blood_type_filter})
   }
 
   onToggleOpen = (id, props, marker, e) => {
-    let showingInfoWindow = this.state.showingInfoWindow
+    const showingInfoWindow = this.state.showingInfoWindow
     showingInfoWindow[id] = true
-    let activeMarker = this.state.activeMarker
+    const activeMarker = this.state.activeMarker
     activeMarker[id] = marker
     this.setState({
       selectedPlace: props,
       activeMarker: activeMarker,
       showingInfoWindow: showingInfoWindow
-    });
+    })
   }
 
   onToggleClose = (props) => {
@@ -226,11 +235,11 @@ class Dashboard extends React.Component {
     if (!this.state.onlyMine) {
       this.props.fetchMyDonations(auth.headers())
     } else {
-      let posLat = this.state.posLat
-      let posLng = this.state.posLng
+      const posLat = this.state.posLat
+      const posLng = this.state.posLng
       this.props.fetchData(auth.headers(), {posLat, posLng})
     }
-    
+
   }
 
 
@@ -249,7 +258,7 @@ class Dashboard extends React.Component {
         <TableRowColumn>{donation.blood_type || '-'}</TableRowColumn>
         <TableRowColumn>{donation.size || '-'}</TableRowColumn>
         <TableRowColumn>{donation.description || '-'}</TableRowColumn>
-        <TableRowColumn>{donation.user_id == auth.user().id && <RaisedButton label="Borrar" primary={true} onClick={this.handleDelete.bind(this, donation)}
+        <TableRowColumn>{donation.user_id === auth.user().id && <RaisedButton label="Borrar" primary={true} onClick={this.handleDelete.bind(this, donation)}
       />}</TableRowColumn>
       </TableRow>
     ))
@@ -437,14 +446,14 @@ class Dashboard extends React.Component {
               { this.state.lat && this.state.lng &&
                 <Marker
                   name={'Posicion actual'}
-                  position={{lat: this.state.lat, lng: this.state.lng}} 
+                  position={{lat: this.state.lat, lng: this.state.lng}}
                 />
               }
             </Map>
           </div>
           }
       </div>
-    );
+    )
   }
 }
 
@@ -455,18 +464,18 @@ Dashboard = GoogleApiWrapper({
 function mapStateToProps (state) {
   return {
     donations: state.donations.donations,
-  };
-};
+  }
+}
 function mapDispatchToProps (dispatch) {
   return {
     fetchData: bindActionCreators(fetchDonations, dispatch),
     createDonationEvent: bindActionCreators(createDonationEvent, dispatch),
     deleteDonationEvent: bindActionCreators(deleteDonationEvent, dispatch),
     fetchMyDonations: bindActionCreators(fetchMyDonations, dispatch)
-  };
+  }
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Dashboard);
+)(Dashboard)

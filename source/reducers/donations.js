@@ -3,14 +3,14 @@ import {
   RECEIVED_MY_DONATIONS,
   DELETED_DONATION,
   CREATED_DONATION
-}                         from 'constants';
-import { auth }           from 'utilities/auth';
+}                         from 'constants'
+import auth               from 'auth'
 
-// let initialState = auth.all() || {};
-let initialState = {
+// const initialState = auth.all() || {}
+const initialState = {
   donations: [],
   my_donations: []
-};
+}
 export default function donationsReducer (state = initialState, action) {
 
   switch (action.type) {
@@ -26,7 +26,7 @@ export default function donationsReducer (state = initialState, action) {
       }
     case DELETED_DONATION:
       const value = action.data.id
-      const arr = state.donations.filter(function(item) { 
+      const arr = state.donations.filter(function(item) {
           return item.id !== value
       })
       return {
@@ -34,6 +34,6 @@ export default function donationsReducer (state = initialState, action) {
         donations: arr
       }
     default:
-      return state;
+      return state
   }
 }

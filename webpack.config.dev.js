@@ -1,5 +1,5 @@
-var path = require('path');
-var webpack = require('webpack');
+var path = require('path')
+var webpack = require('webpack')
 
 // Determina la configuración que luego va a ser usada al compilar
 module.exports = {
@@ -19,16 +19,17 @@ module.exports = {
   resolve: {
     // se definen los alias de los archivos, permitiendo luego hacer referencias
     root: __dirname,
+    // las carpetas de modulos, en nuestro caso los paquetes de node y lo que este debajo de source/
     modulesDirectories: [ 'node_modules', 'source' ],
     extensions: [ '', '.js', '.jsx', '.css', '.jpg'],
     alias: {
+      auth      : path.join(__dirname, 'source', 'auth'),
       actions   : path.join(__dirname, 'source', 'actions'),
       api       : path.join(__dirname, 'source', 'api'),
       components: path.join(__dirname, 'source', 'components'),
       constants : path.join(__dirname, 'source', 'constants'),
-      containers: path.join(__dirname, 'source', 'containers'),
-      utilities : path.join(__dirname, 'source', 'utilities'),
       images    : path.join(__dirname, 'source', 'images'),
+      store     : path.join(__dirname, 'source', 'store'),
     }
   },
   // plugíns necesarios para la app
@@ -40,28 +41,28 @@ module.exports = {
       }
     })
   ],
+  // módulos para poder leer imágenes, css y fonts
   module: {
-    // módulos para poder leer imágenes, css y fonts
     rules: [
       {
-        test: /\.(jpe?g|png|gif)$/i,   //to support eg. background-image property 
+        test: /\.(jpe?g|png|gif)$/i,   //to support eg. background-image property
         loader:"file-loader",
         query:{
           name:'[name].[ext]',
           outputPath:'images/'
-          //the images will be emmited to public/assets/images/ folder 
-          //the images will be put in the DOM <style> tag as eg. background: url(assets/images/image.png); 
+          //the images will be emmited to public/assets/images/ folder
+          //the images will be put in the DOM <style> tag as eg. background: url(assets/images/image.png)
         }
       },
       {
-        test: /\.(woff(2)?|ttf|eot|svg|png|jpg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,    //to support @font-face rule 
+        test: /\.(woff(2)?|ttf|eot|svg|png|jpg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,    //to support @font-face rule
         loader: "url-loader",
         query:{
           limit:'20000',
           name:'[name].[ext]',
           outputPath:'fonts/'
-          //the fonts will be emmited to public/assets/fonts/ folder 
-          //the fonts will be put in the DOM <style> tag as eg. @font-face{ src:url(assets/fonts/font.ttf); }  
+          //the fonts will be emmited to public/assets/fonts/ folder
+          //the fonts will be put in the DOM <style> tag as eg. @font-face{ src:url(assets/fonts/font.ttf) }
         }
       },
       {
@@ -86,5 +87,5 @@ module.exports = {
       test: /\.(gif|jpg|jpeg|png|woff|woff2|eot|ttf|svg)$/i,
       loader: 'url-loader?limit=100000'
     }]
-  }
-};
+  },
+}

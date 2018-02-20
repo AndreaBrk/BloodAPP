@@ -1,5 +1,5 @@
-var path = require('path');
-var webpack = require('webpack');
+var path = require('path')
+var webpack = require('webpack')
 
 module.exports = {
   // todo: buscar que es devtool 'source-map', hay otra opcion para prod
@@ -12,24 +12,23 @@ module.exports = {
     filename: 'index.js',
   },
   resolve: {
-    // probar sin root 
+    // probar sin root
     root: __dirname,
-    // leer doc sobre esto
+    // las carpetas de modulos, en nuestro caso los paquetes de node y lo que este debajo de source/
     modulesDirectories: [ 'node_modules', 'source' ],
     extensions: [ '', '.js', '.jsx', '.css' ],
     alias: {
+      auth      : path.join(__dirname, 'source', 'auth'),
       actions   : path.join(__dirname, 'source', 'actions'),
       api       : path.join(__dirname, 'source', 'api'),
       components: path.join(__dirname, 'source', 'components'),
       constants : path.join(__dirname, 'source', 'constants'),
-      containers: path.join(__dirname, 'source', 'containers'),
-      utilities : path.join(__dirname, 'source', 'utilities'),
       images    : path.join(__dirname, 'source', 'images'),
       store     : path.join(__dirname, 'source', 'store'),
     }
   },
   plugins: [
-    // buscar este plugin 
+    // buscar este plugin
     new webpack.optimize.OccurenceOrderPlugin(),
     // define variables de entorno
     new webpack.DefinePlugin({
@@ -48,7 +47,7 @@ module.exports = {
           name:'[name].[ext]',
           outputPath:'fonts/'
           //the fonts will be emmited to public/assets/fonts/ folder
-          //the fonts will be put in the DOM <style> tag as eg. @font-face{ src:url(assets/fonts/font.ttf); }
+          //the fonts will be put in the DOM <style> tag as eg. @font-face{ src:url(assets/fonts/font.ttf) }
         }
       },
       {
@@ -71,5 +70,5 @@ module.exports = {
       }
     ],
   }
-};
+}
 
