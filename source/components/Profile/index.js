@@ -24,7 +24,6 @@ import FlatButton                 from 'material-ui/FlatButton';
     donation: donación a editar, esta es usado en la modal,
     first_name: nombre del usuario,
     last_name: appelido del usuario,
-    email: email del usuario,
     password: nueva password,
     blood_type_filter: tipo de sangre que va a ser filtrado,
     password_message: mensaje de error si es que hubo 
@@ -39,7 +38,6 @@ class Profile extends React.Component {
       donation: null,
       first_name: null,
       last_name: null,
-      email: null,
       password: null,
       blood_type_filter: null,
       password_message: null,
@@ -58,10 +56,9 @@ class Profile extends React.Component {
       this.setState({
         password_message: null
       });
-      const email = this.state.email || this.props.user.email
       const first_name = this.state.first_name || this.props.user.first_name
       const last_name = this.state.last_name || this.props.user.last_name
-      this.props.UpdateUser(auth.headers(), {id: auth.user().id, email: email, first_name: first_name, last_name: last_name, blood_type: this.state.blood_type, password: this.state.password})
+      this.props.UpdateUser(auth.headers(), {id: auth.user().id, first_name: first_name, last_name: last_name, blood_type: this.state.blood_type, password: this.state.password})
       .catch((error) => {
         setError(error.errors)
       })
@@ -69,7 +66,6 @@ class Profile extends React.Component {
         last_name: null,
         first_name: null,
         password: null,
-        email: ''
       })
       this.props.getUser(auth.headers(), {id: auth.user().id})
     }
@@ -127,12 +123,6 @@ class Profile extends React.Component {
     });
   }
 
-  ChangeEmail = (event) => {
-    this.setState({
-      email: event.target.value,
-    });
-  }
-
   handleBloodTypeFilter = (event) => {
     this.setState({
       blood_type_filter: event.target.value,
@@ -164,11 +154,6 @@ class Profile extends React.Component {
             floatingLabelText={this.props.user && this.props.user.last_name || 'Apellido'}
             hintText={this.state.last_name || ''}
             onChange={(event) => this.ChangeLastName(event)}
-          /><br />
-          <TextField
-            floatingLabelText={this.props.user && this.props.user.email || 'Email'}
-            hintText={this.state.email || ''}
-            onChange={(event) => this.ChangeEmail(event)}
           /><br />
           <TextField
             type='password'
