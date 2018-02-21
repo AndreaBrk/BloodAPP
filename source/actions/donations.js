@@ -8,6 +8,7 @@ import {
 import  * as api                        from 'api/donations'
 
 export function fetchDonations(headers, params) {
+  debugger
   return dispatch => {
     return api.fetchDonations(headers, params)
       .then((json) => {
