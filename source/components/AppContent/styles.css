@@ -4,6 +4,27 @@
   border-radius: 2px;
   padding: 80px 56px 0 56px;
   max-width: 980px;
-  margin: 50px auto 80px auto;
+  padding: 30px 15px 0 15px;
+  margin: 30px auto 80px auto;
   position: relative;
 }
+
+.content.profile {
+  max-width: calc(100% - 20px);
+  margin-top: 19vh;
+}
+
+@media(min-width:768px){
+  .content.profile {
+    max-width: 400px;
+  }
+}
+
+@media(min-width:992px){
+  .content {
+    padding: 80px 56px 0 56px;
+    margin: 50px auto 80px auto;
+  }
+}
+
+@media(min-width:1200px){}

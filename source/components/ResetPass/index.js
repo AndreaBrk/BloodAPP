@@ -95,7 +95,7 @@ class ResetPass extends React.Component {
       <div className={styles['image-body']} >
         <div className={styles.box}>
           <Paper className={styles.paper} zDepth={2}>
-            <h3>Registrate</h3>
+            <h3>Recuperar</h3>
 
             {this.state.errors &&
             <div className={styles.errors}>

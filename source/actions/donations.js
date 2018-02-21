@@ -24,10 +24,10 @@ export function createDonationEvent(headers, params) {
   return dispatch => {
     return api.createDonationEvent(headers, params)
       .then((json) => {
-        dispatch({
-          type: CREATED_DONATION,
-          data: json,
-        })
+        // dispatch({
+        //   type: CREATED_DONATION,
+        //   data: json,
+        // })
       })
       .catch(err => {
       })

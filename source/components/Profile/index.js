@@ -176,7 +176,7 @@ class Profile extends React.Component {
         />
 
         <RaisedButton
-          label="Submit"
+          label="Actualizar"
           primary={true}
           className={styles['button']}
           onClick={(event) => this.handleClick(event)}

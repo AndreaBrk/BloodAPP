@@ -1,7 +1,6 @@
 import React                     from 'react'
 import { connect }               from 'react-redux'
 import { bindActionCreators }    from 'redux'
-import styles                    from './styles.css'
 import {
   fetchDonations,
   createDonationEvent,
@@ -11,12 +10,15 @@ import {
 import auth                       from 'auth'
 import GoogleMapReact             from 'google-map-react'
 import {Map, InfoBox, InfoWindow, Marker, GoogleApiWrapper, Polygon} from 'google-maps-react'
+import cx                         from 'classnames'
 import TextField                  from 'material-ui/TextField'
 import RaisedButton               from 'material-ui/RaisedButton'
 import FlatButton                 from 'material-ui/FlatButton'
 import SelectField                from 'material-ui/SelectField'
 import MenuItem                   from 'material-ui/MenuItem'
 import Toggle                     from 'material-ui/Toggle'
+import IconButton                 from 'material-ui/IconButton'
+
 import {
   Table,
   TableBody,
@@ -30,6 +32,7 @@ import MapIcon                      from 'material-ui/svg-icons/maps/map'
 import ListIcon                     from 'material-ui/svg-icons/action/list'
 import {red500, yellow500, blue500} from 'material-ui/styles/colors'
 import NoData                       from './NoData'
+import styles                       from './styles.css'
 
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>
@@ -173,7 +176,7 @@ class Dashboard extends React.Component {
       })
 
       this.props.createDonationEvent(auth.headers(), creds)
-      .then(() => {
+      .then((data) => {
         this.props.fetchData(auth.headers(), {vposLat, vposLng})
       })
     }
@@ -182,6 +185,7 @@ class Dashboard extends React.Component {
   onMapClicked = (mapProps, map, clickEvent) => {
     const lat = clickEvent.latLng.lat()
     const lng = clickEvent.latLng.lng()
+    debugger
     this.setState({
       lat,
       lng
@@ -258,15 +262,46 @@ class Dashboard extends React.Component {
         <TableRowColumn >{donation.blood_type || '-'}</TableRowColumn>
         <TableRowColumn >{donation.size || '-'}</TableRowColumn>
         <TableRowColumn colSpan={3} >{donation.description || '-'}</TableRowColumn>
-        <TableRowColumn>{donation.user_id === auth.user().id && <RaisedButton label="Borrar" primary={true} onClick={this.handleDelete.bind(this, donation)}
-      />}</TableRowColumn>
+        <TableRowColumn>
+          {donation.user_id === auth.user().id &&
+          <IconButton iconClassName="material-icons" onClick={this.handleDelete.bind(this, donation)} >delete</IconButton>
+          }
+        </TableRowColumn>
       </TableRow>
+    ))
+  }
+
+
+  mobileRow = (donations) => {
+    return _.map(donations, (donation, donation_idx) => (
+      <div className={styles['mobile-table-row']} key={donation.id}>
+        <div className={styles['mobile-table-col']}>
+          <span className={styles['mobile-table-label']}>Solicitante</span>
+          <span className={styles['mobile-table-value']}>{donation.name || '-'}</span>
+        </div>
+        <div className={styles['mobile-table-col']}>
+          <span className={styles['mobile-table-label']}>Tipo de sangre</span>
+          <span className={styles['mobile-table-value']}>{donation.blood_type || '-'}</span>
+        </div>
+        <div className={styles['mobile-table-col']}>
+          <span className={styles['mobile-table-label']}>Donantes requeridos</span>
+          <span className={styles['mobile-table-value']}>{donation.size || '-'}</span>
+        </div>
+        <div className={styles['mobile-table-col']}>
+          {donation.description || '-'}
+        </div>
+        <div className={styles['mobile-table-col']}>
+          {donation.user_id === auth.user().id &&
+          <RaisedButton fullWidth label="Borrar" secondary={true} onClick={this.handleDelete.bind(this, donation)} />
+          }
+        </div>
+      </div>
     ))
   }
 
   render () {
     return (
-      <div className={'container'}>
+      <div className={cx('container', styles.dashboard)}>
         <header>
           <h3><AddLocationIcon color="#AD1457" /> Nueva solicitud</h3>
         </header>
@@ -347,7 +382,7 @@ class Dashboard extends React.Component {
 
         <header>
           <h3><ListIcon color="#AD1457" /> Solicitudes actuales</h3>
-          <div className="right">
+          <div className={styles.right}>
             <Toggle
               style={{ width: 200 }}
               label="Solo mias"
@@ -357,25 +392,32 @@ class Dashboard extends React.Component {
         </header>
 
         {this.props.donations.length ?
-        <div className={styles['table-wrapper']}>
-          <Table selectable={false}>
-            <TableHeader
-              displaySelectAll={false}
-              adjustForCheckbox={false}
-            >
-              <TableRow>
-                <TableHeaderColumn>Solicitante</TableHeaderColumn>
-                <TableHeaderColumn>Tipo de sangre</TableHeaderColumn>
-                <TableHeaderColumn>Donantes requeridos</TableHeaderColumn>
-                <TableHeaderColumn colSpan={3}>Descripcion</TableHeaderColumn>
-                <TableHeaderColumn>Borrar</TableHeaderColumn>
-              </TableRow>
-            </TableHeader>
+        <div>
+          <div className={styles['table-wrapper']}>
+            <Table selectable={false}>
+              <TableHeader
+                displaySelectAll={false}
+                adjustForCheckbox={false}
+              >
+                <TableRow>
+                  <TableHeaderColumn>Solicitante</TableHeaderColumn>
+                  <TableHeaderColumn>Tipo de sangre</TableHeaderColumn>
+                  <TableHeaderColumn>Donantes requeridos</TableHeaderColumn>
+                  <TableHeaderColumn colSpan={3}>Descripcion</TableHeaderColumn>
+                  <TableHeaderColumn>Borrar</TableHeaderColumn>
+                </TableRow>
+              </TableHeader>
 
-            <TableBody displayRowCheckbox={false}>
-              {this.row(this.props.donations)}
-            </TableBody>
-          </Table>
+              <TableBody displayRowCheckbox={false}>
+                {this.row(this.props.donations)}
+              </TableBody>
+            </Table>
+          </div>
+
+          {/* Inspirado en https://codepen.io/AllThingsSmitty/pen/MyqmdM */}
+          <div className={styles['mobile-table']}>
+            {this.mobileRow(this.props.donations)}
+          </div>
         </div>
         :
         <NoData message={this.state.message_warning}/>
@@ -411,6 +453,7 @@ class Dashboard extends React.Component {
             <RaisedButton
               label="Filtrar"
               primary={true}
+              className={styles.submit}
               onClick={(event) => this.handleFilter(event)}
             />
           </div>

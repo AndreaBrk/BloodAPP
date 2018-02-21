@@ -3,7 +3,7 @@
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
-  width: 380px;
+  width: calc(100% - 20px);
 }
 
 .paper {
@@ -83,3 +83,13 @@
   background-size: cover;
   height: 100vh;
 }
+
+@media(min-width:768px){
+  .box {
+    width: 380px;
+  }
+}
+
+@media(min-width:992px){}
+
+@media(min-width:1200px){}

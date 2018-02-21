@@ -52,11 +52,6 @@ class AppBar extends React.Component {
     this.props.history.push('/profile')
   }
 
-  componentDidMount() {
-    console.log(this.props)
-  }
-
-
   render () {
     const { title, onLeftIconButtonTouchTap } = this.props
 

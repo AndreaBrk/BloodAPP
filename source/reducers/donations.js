@@ -14,6 +14,14 @@ const initialState = {
 export default function donationsReducer (state = initialState, action) {
 
   switch (action.type) {
+    case CREATED_DONATION:
+      return {
+        ...state,
+        donations: [
+          ...state.donations,
+          action.data
+        ]
+      }
     case RECEIVED_DONATIONS:
       return {
         ...state,

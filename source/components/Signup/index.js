@@ -127,7 +127,7 @@ class Signup extends React.Component {
       <div className={styles['image-body']}  onEnter={this.checkLogin()}>
         <div className={styles.box}>
           <Paper className={styles.paper} zDepth={2}>
-            <h3>Registrate</h3>
+            <h3>Registrarme</h3>
 
             {this.state.errors &&
             <div className={styles.errors}>
