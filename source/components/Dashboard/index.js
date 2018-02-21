@@ -128,7 +128,7 @@ class Dashboard extends React.Component {
     let nmessage = ''
     let smessage = ''
     let tmessage = ''
-    let visPos = true
+    let visPos =  true
     if (vname === "" || vname === null) {
       nmessage = "El nombre no puede ser vacío"
     }
@@ -177,7 +177,7 @@ class Dashboard extends React.Component {
 
       this.props.createDonationEvent(auth.headers(), creds)
       .then((data) => {
-        this.props.fetchData(auth.headers(), {postLat: vposLat, posLng: vposLng})
+        this.props.fetchData(auth.headers(), {postLat: this.state.posLat, posLng: this.state.posLng})
       })
     }
   }
