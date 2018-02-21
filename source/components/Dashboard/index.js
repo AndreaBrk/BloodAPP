@@ -192,6 +192,7 @@ class Dashboard extends React.Component {
   }
 
   handleBloodTypeFilter = (event, key, payload) => {
+    debugger
     this.setState({
       blood_type_filter: payload,
     })
