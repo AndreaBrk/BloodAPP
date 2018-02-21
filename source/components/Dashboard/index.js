@@ -257,7 +257,7 @@ class Dashboard extends React.Component {
         <TableRowColumn >{donation.name || '-'}</TableRowColumn>
         <TableRowColumn >{donation.blood_type || '-'}</TableRowColumn>
         <TableRowColumn >{donation.size || '-'}</TableRowColumn>
-        <TableRowColumn colSpan={2} >{donation.description || '-'}</TableRowColumn>
+        <TableRowColumn colSpan={3} >{donation.description || '-'}</TableRowColumn>
         <TableRowColumn>{donation.user_id === auth.user().id && <RaisedButton label="Borrar" primary={true} onClick={this.handleDelete.bind(this, donation)}
       />}</TableRowColumn>
       </TableRow>
@@ -326,6 +326,7 @@ class Dashboard extends React.Component {
               fullWidth={true}
               value={this.state.description}
               onChange={this.handleChangeDescription}
+              colSpan={3}
             />
           </div>
 
