@@ -208,6 +208,7 @@ class Dashboard extends React.Component {
   handleFilter = () => {
     const posLat = this.state.posLat
     const posLng = this.state.posLng
+    debugger
     this.props.fetchData(auth.headers(), {posLat, posLng, blood_type: this.state.blood_type_filter})
   }
 
