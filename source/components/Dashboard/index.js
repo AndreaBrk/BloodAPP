@@ -254,10 +254,10 @@ class Dashboard extends React.Component {
   row = (donations) => {
     return _.map(donations, (donation, donation_idx) => (
       <TableRow key={donation.id}>
-        <TableRowColumn>{donation.name || '-'}</TableRowColumn>
-        <TableRowColumn>{donation.blood_type || '-'}</TableRowColumn>
-        <TableRowColumn>{donation.size || '-'}</TableRowColumn>
-        <TableRowColumn>{donation.description || '-'}</TableRowColumn>
+        <TableRowColumn tooltip={donation.name || '-'}>{donation.name || '-'}</TableRowColumn>
+        <TableRowColumn tooltip={donation.blood_type || '-'}>{donation.blood_type || '-'}</TableRowColumn>
+        <TableRowColumn tooltip={donation.size || '-'}>{donation.size || '-'}</TableRowColumn>
+        <TableRowColumn tooltip={donation.description || '-'}>{donation.description || '-'}</TableRowColumn>
         <TableRowColumn>{donation.user_id === auth.user().id && <RaisedButton label="Borrar" primary={true} onClick={this.handleDelete.bind(this, donation)}
       />}</TableRowColumn>
       </TableRow>
