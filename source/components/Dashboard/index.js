@@ -326,7 +326,6 @@ class Dashboard extends React.Component {
               fullWidth={true}
               value={this.state.description}
               onChange={this.handleChangeDescription}
-              colSpan={3}
             />
           </div>
 
@@ -368,7 +367,7 @@ class Dashboard extends React.Component {
                 <TableHeaderColumn>Solicitante</TableHeaderColumn>
                 <TableHeaderColumn>Tipo de sangre</TableHeaderColumn>
                 <TableHeaderColumn>Donantes requeridos</TableHeaderColumn>
-                <TableHeaderColumn>Descripcion</TableHeaderColumn>
+                <TableHeaderColumn colSpan={3}>Descripcion</TableHeaderColumn>
                 <TableHeaderColumn>Borrar</TableHeaderColumn>
               </TableRow>
             </TableHeader>
