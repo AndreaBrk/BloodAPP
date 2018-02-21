@@ -185,7 +185,6 @@ class Dashboard extends React.Component {
   onMapClicked = (mapProps, map, clickEvent) => {
     const lat = clickEvent.latLng.lat()
     const lng = clickEvent.latLng.lng()
-    debugger
     this.setState({
       lat,
       lng
