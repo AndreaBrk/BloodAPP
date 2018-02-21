@@ -177,7 +177,7 @@ class Dashboard extends React.Component {
 
       this.props.createDonationEvent(auth.headers(), creds)
       .then((data) => {
-        this.props.fetchData(auth.headers(), {postLat: vposLat, posLng: vposLng})
+        this.props.fetchData(auth.headers(), {posLat: vposLat, posLng: vposLng})
       })
     }
   }
