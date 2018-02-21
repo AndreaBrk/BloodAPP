@@ -209,7 +209,7 @@ class Dashboard extends React.Component {
     const posLat = this.state.posLat
     const posLng = this.state.posLng
     debugger
-    this.props.fetchData(auth.headers(), {posLat, posLng, blood_type: this.state.blood_type_filter})
+    this.props.fetchData(auth.headers(), {blood_type: this.state.blood_type_filter, posLat, posLng})
   }
 
   onToggleOpen = (id, props, marker, e) => {
