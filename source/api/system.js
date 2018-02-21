@@ -34,6 +34,7 @@ export function apiRequest(method, type, data) {
     if (method === 'get') {
       const firt = _.toPairs(data.body)[0]
       _.mapKeys(data.body, function(value, key, index) {
+        debugger
         if (firt[0] === key) {
           data.url += '?' + key + '=' + value
         } else {
