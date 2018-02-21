@@ -441,14 +441,14 @@ class Dashboard extends React.Component {
               value={this.state.blood_type_filter}
               onChange={this.handleBloodTypeFilter}
             >
-              <MenuItem value={"O-"} primaryText="O-" />
-              <MenuItem value={"O+"} primaryText="O+" />
-              <MenuItem value={"A-"} primaryText="A-" />
-              <MenuItem value={"A+"} primaryText="A+" />
-              <MenuItem value={"B-"} primaryText="B-" />
-              <MenuItem value={"B+"} primaryText="B+" />
-              <MenuItem value={"AB-"} primaryText="AB-" />
-              <MenuItem value={"AB+"} primaryText="AB+" />
+              <MenuItem value={"O%2D"} primaryText="O-" />
+              <MenuItem value={"O%2B"} primaryText="O+" />
+              <MenuItem value={"A%2D"} primaryText="A-" />
+              <MenuItem value={"A%2B"} primaryText="A+" />
+              <MenuItem value={"B%2D"} primaryText="B-" />
+              <MenuItem value={"B%2B"} primaryText="B+" />
+              <MenuItem value={"AB%2D"} primaryText="AB-" />
+              <MenuItem value={"AB%2B"} primaryText="AB+" />
             </SelectField>
 
             <RaisedButton
